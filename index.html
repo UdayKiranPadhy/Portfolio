@@ -1139,8 +1139,16 @@
                                 10% improvement in operational efficiency through optimized resource utilization.</span>
                         </li>
                         <li data-detail-id="exp1-5"><span class="type-animate">Developed comprehensive monitoring and
-                                observability solutions (using Prometheus/Grafana) for microservices and AI workloads,
-                                ensuring 99% uptime and proactive anomaly detection.</span></li>
+                                observability solutions for microservices and AI workloads,
+                                ensuring 99% uptime and proactive anomaly detection.</span>
+                        </li>
+                        <li data-detail-id="exp1-6"><span class="type-animate">Implemented scalable solution for
+                                handling large-scale user segmentation, improving targeted marketing
+                                efforts and user engagement.</span>
+                        </li>
+                        <li data-detail-id="exp1-7"><span class="type-animate">Moved legacy code to modern frameworks,
+                                improving maintainability and performance.</span>
+                        </li>
                     </ul>
                 </div>
 
@@ -1571,6 +1579,77 @@
                         <rect x="220" y="75" width="65" height="30" rx="3" fill="#fef7e0" stroke="#f9ab00"/>
                         <text x="252" y="94" text-anchor="middle" font-size="7" fill="#b06000">Anomaly Alerts</text>
                         <circle cx="252" cy="84" r="4" fill="#ea4335"/>
+
+                        <defs>
+                            <marker id="arr" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#5f6368" />
+                            </marker>
+                        </defs>
+                    </svg>`
+                },
+                'exp1-6': {
+                    title: 'High-Scale User Segmentation Engine',
+                    problem: 'Inefficient processing of massive user datasets led to delayed marketing campaigns and generic, low-engagement user outreach.',
+                    approach: 'Designed a distributed data processing pipeline to categorize users into granular segments based on real-time behavioral and demographic data.',
+                    solution: 'Developed a scalable segmentation service utilizing optimized database queries and background workers to process millions of user profiles with minimal latency.',
+                    impact: 'Empowered the marketing team with precise targeting capabilities, resulting in significantly higher conversion rates and improved user retention.',
+                    perf: [{ v: 'Millions', l: 'Users Segmented' }, { v: '2x', l: 'Engagement Boost' }],
+                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                        <rect x="10" y="40" width="55" height="40" rx="4" fill="#f1f3f4" stroke="#5f6368"/>
+                        <text x="37" y="60" text-anchor="middle" font-size="8" fill="#3c4043" font-weight="bold">User</text>
+                        <text x="37" y="70" text-anchor="middle" font-size="8" fill="#3c4043" font-weight="bold">Data Lake</text>
+
+                        <path d="M65,60 L90,60" stroke="#5f6368" stroke-width="1.5" marker-end="url(#arr)"/>
+                        <rect x="95" y="30" width="85" height="60" rx="5" fill="#e8f0fe" stroke="#1a73e8"/>
+                        <text x="137" y="55" text-anchor="middle" font-size="9" font-weight="bold" fill="#1a73e8">Segmentation</text>
+                        <text x="137" y="70" text-anchor="middle" font-size="9" font-weight="bold" fill="#1a73e8">Engine</text>
+
+                        <path d="M180,45 L215,25" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+                        <path d="M180,60 L215,60" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+                        <path d="M180,75 L215,95" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <rect x="220" y="10" width="65" height="25" rx="3" fill="#e6f4ea" stroke="#1e8e3e"/>
+                        <text x="252" y="27" text-anchor="middle" font-size="7" fill="#1e8e3e">High Spenders</text>
+                        
+                        <rect x="220" y="48" width="65" height="25" rx="3" fill="#e6f4ea" stroke="#1e8e3e"/>
+                        <text x="252" y="65" text-anchor="middle" font-size="7" fill="#1e8e3e">Churn Risk</text>
+
+                        <rect x="220" y="85" width="65" height="25" rx="3" fill="#e6f4ea" stroke="#1e8e3e"/>
+                        <text x="252" y="102" text-anchor="middle" font-size="7" fill="#1e8e3e">New Users</text>
+
+                        <defs>
+                            <marker id="arr" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#5f6368" />
+                            </marker>
+                        </defs>
+                    </svg>`
+                },
+                'exp1-7': {
+                    title: 'Legacy System Modernization and Refactoring',
+                    problem: 'Technical debt from an aging codebase caused slow development cycles, difficult maintenance, and degraded application performance.',
+                    approach: 'Incremental migration of legacy modules to modern frameworks, focusing on modularity and adherence to clean code principles.',
+                    solution: 'Successfully ported legacy logic to a modern framework (Python/FastAPI), replacing monolithic patterns with scalable components and optimized data access layers.',
+                    impact: 'Significantly improved developer productivity by reducing the complexity of the codebase and decreasing API response times.',
+                    perf: [{ v: '40%', l: 'Codebase Reduction' }, { v: '25%', l: 'Perf Improvement' }],
+                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                        <rect x="10" y="30" width="80" height="70" rx="4" fill="#fce8e6" stroke="#d93025"/>
+                        <text x="50" y="50" text-anchor="middle" font-size="8" fill="#d93025" font-weight="bold">Legacy</text>
+                        <text x="50" y="65" text-anchor="middle" font-size="7" fill="#d93025">Monolithic</text>
+                        <text x="50" y="75" text-anchor="middle" font-size="7" fill="#d93025">Codebase</text>
+
+                        <path d="M100,65 L135,65" stroke="#5f6368" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arr)"/>
+                        
+                        <rect x="145" y="30" width="140" height="70" rx="4" fill="#e6f4ea" stroke="#1e8e3e"/>
+                        <text x="215" y="45" text-anchor="middle" font-size="9" fill="#1e8e3e" font-weight="bold">Modern Framework</text>
+                        
+                        <rect x="155" y="55" width="35" height="30" rx="2" fill="#ffffff" stroke="#1e8e3e"/>
+                        <text x="172.5" y="75" text-anchor="middle" font-size="6">Module A</text>
+                        
+                        <rect x="197.5" y="55" width="35" height="30" rx="2" fill="#ffffff" stroke="#1e8e3e"/>
+                        <text x="215" y="75" text-anchor="middle" font-size="6">Module B</text>
+                        
+                        <rect x="240" y="55" width="35" height="30" rx="2" fill="#ffffff" stroke="#1e8e3e"/>
+                        <text x="257.5" y="75" text-anchor="middle" font-size="6">Module C</text>
 
                         <defs>
                             <marker id="arr" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
