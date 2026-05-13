@@ -668,14 +668,44 @@
         #details-modal {
             position: fixed;
             inset: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.65);
             z-index: 2000;
             display: none;
             opacity: 0;
             transition: opacity 0.3s ease;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+            overflow: hidden;
+        }
+
+        /* Non-scrolling layer for the mouse-following accent — sits outside .modal-scroll so it stays put when content scrolls */
+        #details-modal .modal-bg-accent {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(900px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(26, 115, 232, 0.22),
+                    rgba(26, 115, 232, 0.08) 35%,
+                    transparent 65%),
+                radial-gradient(circle at 15% 85%, rgba(26, 115, 232, 0.06), transparent 55%),
+                radial-gradient(circle at 85% 15%, rgba(26, 115, 232, 0.05), transparent 55%);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #details-modal.open .modal-bg-accent {
+            opacity: 1;
+        }
+
+        /* Scrollable layer that wraps the modal-container */
+        #details-modal .modal-scroll {
+            position: absolute;
+            inset: 0;
             overflow-y: auto;
             padding: 4rem 1rem;
+            z-index: 1;
         }
 
         #details-modal.open {
@@ -690,8 +720,10 @@
             border-radius: 32px;
             padding: 3rem;
             border: 1px solid var(--border-color);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
             position: relative;
+            z-index: 1;
+            cursor: auto;
         }
 
         .close-modal {
@@ -764,10 +796,216 @@
             color: var(--text-muted);
         }
 
+        /* ===== Project cards (data-driven) ===== */
+        .project-card {
+            cursor: pointer;
+        }
+
+        .featured-pill {
+            display: inline-block;
+            background: #e8f0fe;
+            color: var(--blue-accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-tagline {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .project-card-secondary .project-tagline {
+            font-size: 0.95rem;
+        }
+
+        #projects-grid-secondary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            #projects-grid-secondary {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .more-projects-header {
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .more-projects-header .modal-label {
+            font-size: 0.85rem;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            pointer-events: none;
+        }
+
+        /* Reveal action buttons only after the last tech tag has finished typing */
+        .project-card:has(.skills-container .skill-tag:last-child.typed) .card-actions {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .card-action-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.2rem;
+            border-radius: 999px;
+            background: #f8f9fa;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .card-action-chip:hover {
+            background: #f1f3f4;
+            color: var(--text-main);
+            border-color: var(--border-color);
+            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .card-action-chip svg {
+            width: 15px;
+            height: 15px;
+            stroke-width: 2;
+            flex-shrink: 0;
+        }
+
+        .card-action-chip.primary {
+            background: var(--blue-accent);
+            color: white;
+            border-color: var(--blue-accent);
+        }
+
+        .card-action-chip.primary:hover {
+            background: var(--blue-hover);
+            color: white;
+            border-color: var(--blue-hover);
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* ===== Modal: project-specific sections ===== */
+        .modal-tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .modal-links-row {
+            display: flex;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .modal-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.25rem;
+            border-radius: 999px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .modal-link-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 2;
+        }
+
+        .modal-link-btn.primary {
+            background: var(--blue-accent);
+            color: white;
+            border: 1px solid var(--blue-accent);
+        }
+
+        .modal-link-btn.primary:hover {
+            background: var(--blue-hover);
+            border-color: var(--blue-hover);
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .modal-link-btn.secondary {
+            background: #f8f9fa;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-link-btn.secondary:hover {
+            background: #f1f3f4;
+            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .modal-tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .diag-hero-container {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            border: 1px solid var(--border-color);
+            margin: 1.5rem 0 2rem 0;
+            width: 100%;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .diag-hero-container svg {
+            width: 100%;
+            height: auto;
+            max-height: 360px;
+        }
+
         /* Hide backgrounds/borders of empty tags before typing starts */
         .skill-tag.type-animate:not(.typed) {
             background-color: transparent !important;
             border-color: transparent !important;
+        }
+
+        /* Hide Featured pill background/text until typewriter starts */
+        .featured-pill.type-animate:not(.typed) {
+            background-color: transparent !important;
+            color: transparent !important;
         }
 
         /* Grid for Certs & Achievements */
@@ -1044,55 +1282,11 @@
                 <span class="section-title type-animate">Projects</span>
             </div>
             <div class="right-col">
-                <!-- Project 1 -->
-                <div class="card animate-up">
-                    <a href="https://github.com/UdayKiranPadhy/Leetcode" target="_blank" class="project-link">
-                        <span class="type-animate">Leetcode Solutions Repository</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <ul class="bullet-list" style="margin-top: 1rem;">
-                        <li><span class="type-animate">Maintained repository of LeetCode solutions, building strong
-                                foundation in algorithms and data structures.</span></li>
-                        <li><span class="type-animate">Documented solutions with clear and concise explanations,
-                                facilitating knowledge sharing and code understanding.</span></li>
-                    </ul>
-                    <div class="skills-container">
-                        <span class="skill-tag type-animate">Python</span>
-                        <span class="skill-tag type-animate">Algorithms</span>
-                        <span class="skill-tag type-animate">Data Structures</span>
-                        <span class="skill-tag type-animate">Problem Solving</span>
-                    </div>
+                <div id="projects-grid-featured"></div>
+                <div id="projects-secondary-header" class="more-projects-header animate-up" style="display: none;">
+                    <span class="modal-label type-animate">More Projects</span>
                 </div>
-
-                <!-- Project 2 -->
-                <div class="card animate-up">
-                    <a href="#" target="_blank" class="project-link">
-                        <span class="type-animate">Enabling Computer For Physically Challenged People</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                    <ul class="bullet-list" style="margin-top: 1rem;">
-                        <li><span class="type-animate">Engineered an eye-tracking system using OpenCV, enabling
-                                hands-free mouse control with 60% accuracy.</span></li>
-                        <li><span class="type-animate">Implemented real-time image and voice recognition, using computer
-                                vision and natural language processing.</span></li>
-                    </ul>
-                    <div class="skills-container">
-                        <span class="skill-tag type-animate">Python</span>
-                        <span class="skill-tag type-animate">OpenCV</span>
-                        <span class="skill-tag type-animate">Computer Vision</span>
-                        <span class="skill-tag type-animate">Natural Language Processing</span>
-                    </div>
-                </div>
+                <div id="projects-grid-secondary"></div>
             </div>
         </section>
 
@@ -1303,6 +1497,8 @@
 
     <!-- Detailed View Modal -->
     <div id="details-modal">
+        <div class="modal-bg-accent"></div>
+        <div class="modal-scroll">
         <div class="modal-container">
             <button class="close-modal" id="close-modal-btn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1312,6 +1508,10 @@
                 </svg>
             </button>
             <h2 id="modal-title" class="type-animate-modal">Project Details</h2>
+            <p id="modal-tagline" class="modal-tagline" style="display: none;"></p>
+            <div id="modal-links" class="modal-links-row" style="display: none;"></div>
+            <div id="modal-tags" class="modal-tags-row skills-container" style="display: none;"></div>
+            <div id="modal-hero-diagram" class="diag-hero-container" style="display: none;"></div>
 
             <div class="modal-grid">
                 <div class="modal-left">
@@ -1333,13 +1533,16 @@
                     </div>
                 </div>
                 <div class="modal-right">
-                    <span class="modal-label">Architecture Diagram</span>
-                    <div class="diag-container" id="modal-diagram"></div>
+                    <div id="modal-narrow-diagram-wrap">
+                        <span class="modal-label">Architecture Diagram</span>
+                        <div class="diag-container" id="modal-diagram"></div>
+                    </div>
 
-                    <span class="modal-label" style="margin-top: 2rem; display: block;">Performance Improvements</span>
+                    <span class="modal-label" style="margin-top: 2rem; display: block;">Key Highlights</span>
                     <div id="modal-perf"></div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 
@@ -1805,6 +2008,323 @@
                 }
             };
 
+            // ========== Projects: data-driven rendering ==========
+            const projectsData = [
+                {
+                    id: 'proj-aws-rl-env',
+                    title: 'AWS RL Environment',
+                    tagline: 'Production-grade RL training pipeline for cloud agents — 120+ AWS tasks, 8-way parallel rollouts, full SFT→GRPO pipeline.',
+                    tags: ['Python', 'GRPO', 'Unsloth', 'TRL', 'FastAPI', 'OpenEnv', 'HuggingFace'],
+                    featured: true,
+                    links: [
+                        { label: 'Live Playground', url: 'https://sizzing-aws-rl-env.hf.space/web', kind: 'primary' },
+                        { label: 'GitHub', url: 'https://github.com/UdayKiranPadhy/aws-rl-env', kind: 'secondary' },
+                        { label: 'HF Space', url: 'https://huggingface.co/spaces/Sizzing/aws_rl_env', kind: 'secondary' },
+                    ],
+                },
+                {
+                    id: 'proj-leetcode-companion',
+                    title: 'LeetCode Companion',
+                    tagline: 'AI-powered LeetCode tutor with streaming Gemini agents, formal complexity proofs, and multi-language annotated solutions.',
+                    tags: ['React', 'TypeScript', 'FastAPI', 'Gemini AI', 'SSE', 'crawl4ai', 'Docker'],
+                    featured: true,
+                    links: [
+                        { label: 'Live Demo', url: 'https://leetcode.udaykp.dev', kind: 'primary' },
+                        { label: 'GitHub', url: 'https://github.com/UdayKiranPadhy/LeetcodeCompanion', kind: 'secondary' },
+                    ],
+                },
+                {
+                    id: 'proj-leetcode-solutions',
+                    title: 'Leetcode Solutions Repository',
+                    tagline: 'Curated archive of algorithmic problem solutions with clear, didactic explanations.',
+                    tags: ['Python', 'Algorithms', 'Data Structures'],
+                    featured: false,
+                    links: [
+                        { label: 'GitHub', url: 'https://github.com/UdayKiranPadhy/Leetcode', kind: 'secondary' },
+                    ],
+                },
+                {
+                    id: 'proj-eye-tracking',
+                    title: 'Computer Access for Physically Challenged Users',
+                    tagline: 'Hands-free computing via eye-tracking and voice control — software-only, no specialized hardware.',
+                    tags: ['Python', 'OpenCV', 'Computer Vision', 'NLP'],
+                    featured: false,
+                    links: [],
+                },
+            ];
+
+            const linkChipIcons = {
+                github: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`,
+                external: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
+                play: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+                hf: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>`,
+            };
+
+            function pickLinkIcon(label) {
+                const lower = label.toLowerCase();
+                if (lower.includes('github')) return linkChipIcons.github;
+                if (lower.includes('live') || lower.includes('demo')) return linkChipIcons.play;
+                if (lower.includes('hf') || lower.includes('hugging')) return linkChipIcons.hf;
+                return linkChipIcons.external;
+            }
+
+            const infoIconSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`;
+            const chevronIconSvg = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>`;
+
+            function buildProjectCard(p, isFeatured) {
+                const card = document.createElement('div');
+                card.className = `card animate-up project-card ${isFeatured ? 'project-card-featured' : 'project-card-secondary'}`;
+                card.setAttribute('data-project-id', p.id);
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('aria-label', `${p.title} — view details`);
+
+                const featuredPill = isFeatured ? `<span class="featured-pill type-animate">Featured</span>` : '';
+
+                const titleHTML = `
+                    <div class="project-link" aria-hidden="true">
+                        <span class="type-animate">${p.title}</span>
+                        ${chevronIconSvg}
+                    </div>`;
+
+                const taglineHTML = `<p class="project-tagline"><span class="type-animate">${p.tagline}</span></p>`;
+
+                const tagsHTML = `<div class="skills-container">${p.tags.map(t => `<span class="skill-tag type-animate">${t}</span>`).join('')}</div>`;
+
+                const linkChips = p.links.map(l => `
+                    <a class="card-action-chip ${l.kind === 'primary' ? 'primary' : ''}" href="${l.url}" target="_blank" rel="noopener noreferrer" data-link-chip="1">
+                        ${pickLinkIcon(l.label)}
+                        <span>${l.label}</span>
+                    </a>
+                `).join('');
+
+                const chipsHTML = `
+                    <div class="card-actions">
+                        <button class="card-action-chip primary" data-open-modal="${p.id}" type="button">
+                            ${infoIconSvg}
+                            <span>View Details</span>
+                        </button>
+                        ${linkChips}
+                    </div>`;
+
+                card.innerHTML = featuredPill + titleHTML + taglineHTML + tagsHTML + chipsHTML;
+
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('[data-link-chip]')) return;
+                    openModal(p.id);
+                });
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        if (e.target.closest('[data-link-chip]')) return;
+                        e.preventDefault();
+                        openModal(p.id);
+                    }
+                });
+
+                return card;
+            }
+
+            function renderProjects() {
+                const featuredHost = document.getElementById('projects-grid-featured');
+                const secondaryHost = document.getElementById('projects-grid-secondary');
+                const secondaryHeader = document.getElementById('projects-secondary-header');
+                if (!featuredHost || !secondaryHost) return;
+
+                const featured = projectsData.filter(p => p.featured);
+                const secondary = projectsData.filter(p => !p.featured);
+
+                featured.forEach(p => featuredHost.appendChild(buildProjectCard(p, true)));
+                secondary.forEach(p => secondaryHost.appendChild(buildProjectCard(p, false)));
+
+                if (secondary.length) secondaryHeader.style.display = 'block';
+            }
+
+            // ========== Extend projectDetails with full project entries ==========
+            Object.assign(projectDetails, {
+                'proj-aws-rl-env': {
+                    title: 'AWS RL Environment',
+                    tagline: 'Production-grade RL training pipeline for cloud agents — 120+ AWS tasks, 8-way parallel rollouts, full SFT→GRPO pipeline.',
+                    tags: ['Python', 'GRPO', 'Unsloth', 'TRL', 'FastAPI', 'OpenEnv', 'HuggingFace'],
+                    links: [
+                        { label: 'Live Playground', url: 'https://sizzing-aws-rl-env.hf.space/web', kind: 'primary' },
+                        { label: 'GitHub', url: 'https://github.com/UdayKiranPadhy/aws-rl-env', kind: 'secondary' },
+                        { label: 'HF Space', url: 'https://huggingface.co/spaces/Sizzing/aws_rl_env', kind: 'secondary' },
+                        { label: 'HF: GRPO Adapter', url: 'https://huggingface.co/Sizzing/aws-rl-grpo-qwen25coder3b-adapter', kind: 'secondary' },
+                    ],
+                    problem: 'Training capable AWS infrastructure agents typically requires real cloud accounts, real cost, and slow iteration. Existing simulators are toy-scale and do not match real AWS CLI semantics, leaving a gap between cheap learning and production-grade agent behavior.',
+                    approach: 'Pair a vendored MiniStack simulator (34 AWS services, zero cost, locally reproducible) with a curriculum-driven training pipeline, an 8-way parallel rollout architecture, and an 8-layer anti-reward-hacking defense stack. Train an SFT then GRPO pipeline on top of Qwen2.5-Coder-3B for a controllable, reproducible cloud agent.',
+                    solution: 'Built an OpenEnv-compatible environment serving 120+ YAML-defined AWS tasks across 5 difficulty tiers with mastery tracking and spaced-repetition scheduling. Engineered three coordinated pool layers (server-side MiniStackPool, client-side GrpoPool, in-process MultiTurnEnvPool) to run 8 rollouts in parallel on a single consumer GPU. Reward shaping covers ground-truth verification, command allow-listing, monotonic progress, and exact resource validation.',
+                    impact: 'Lifted Qwen2.5-Coder-3B from 39% to 89% exact-match accuracy after SFT; GRPO added another +6 percentage points on the intermediate tier. Shipped reproducible Colab notebooks, an HF Space playground, and published SFT/GRPO adapters plus the training dataset publicly — the full pipeline runs end-to-end on a free Colab GPU.',
+                    perf: [
+                        { v: '120+', l: 'AWS Tasks' },
+                        { v: '89%', l: 'Exact-Match Accuracy' },
+                        { v: '8×', l: 'Parallel Rollouts' },
+                        { v: '5 tiers', l: 'Curriculum Levels' },
+                    ],
+                    heroDiagram: `<svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <marker id="arr-aws" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#5f6368"/>
+                            </marker>
+                        </defs>
+                        <!-- Curriculum zone -->
+                        <rect x="20" y="40" width="170" height="200" rx="12" fill="#fef7e0" stroke="#f9ab00" stroke-width="1.5"/>
+                        <text x="105" y="65" text-anchor="middle" font-size="13" font-weight="600" fill="#3c4043">Curriculum</text>
+                        <text x="105" y="82" text-anchor="middle" font-size="10" fill="#5f6368">120+ YAML Tasks</text>
+                        <rect x="40" y="95" width="130" height="20" rx="4" fill="#fff" stroke="#f9ab00"/>
+                        <text x="105" y="109" text-anchor="middle" font-size="9" fill="#3c4043">Warmup · 25</text>
+                        <rect x="40" y="120" width="130" height="20" rx="4" fill="#fff" stroke="#f9ab00"/>
+                        <text x="105" y="134" text-anchor="middle" font-size="9" fill="#3c4043">Beginner · 25</text>
+                        <rect x="40" y="145" width="130" height="20" rx="4" fill="#fff" stroke="#f9ab00"/>
+                        <text x="105" y="159" text-anchor="middle" font-size="9" fill="#3c4043">Intermediate · 25</text>
+                        <rect x="40" y="170" width="130" height="20" rx="4" fill="#fff" stroke="#f9ab00"/>
+                        <text x="105" y="184" text-anchor="middle" font-size="9" fill="#3c4043">Advanced · 25</text>
+                        <rect x="40" y="195" width="130" height="20" rx="4" fill="#fff" stroke="#f9ab00"/>
+                        <text x="105" y="209" text-anchor="middle" font-size="9" fill="#3c4043">Expert · 24</text>
+                        <!-- Arrow 1 -->
+                        <path d="M 192 140 L 230 140" stroke="#5f6368" stroke-width="1.5" marker-end="url(#arr-aws)" fill="none"/>
+                        <!-- Training zone -->
+                        <rect x="235" y="40" width="250" height="200" rx="12" fill="#e8f0fe" stroke="#1a73e8" stroke-width="1.5"/>
+                        <text x="360" y="65" text-anchor="middle" font-size="13" font-weight="600" fill="#1a73e8">GRPO Trainer</text>
+                        <text x="360" y="82" text-anchor="middle" font-size="10" fill="#5f6368">8-way Parallel Rollouts · MiniStack Pool</text>
+                        <g transform="translate(252, 100)">
+                            <rect x="0" y="0" width="50" height="26" rx="4" fill="#fff" stroke="#1a73e8"/>
+                            <text x="25" y="17" text-anchor="middle" font-size="9" fill="#1a73e8">Env 1</text>
+                            <rect x="56" y="0" width="50" height="26" rx="4" fill="#fff" stroke="#1a73e8"/>
+                            <text x="81" y="17" text-anchor="middle" font-size="9" fill="#1a73e8">Env 2</text>
+                            <rect x="112" y="0" width="50" height="26" rx="4" fill="#fff" stroke="#1a73e8"/>
+                            <text x="137" y="17" text-anchor="middle" font-size="9" fill="#1a73e8">Env 3</text>
+                            <rect x="168" y="0" width="50" height="26" rx="4" fill="#fff" stroke="#1a73e8"/>
+                            <text x="193" y="17" text-anchor="middle" font-size="9" fill="#1a73e8">Env 4</text>
+                            <rect x="0" y="34" width="50" height="26" rx="4" fill="#fff" stroke="#1a73e8"/>
+                            <text x="25" y="51" text-anchor="middle" font-size="9" fill="#1a73e8">Env 5</text>
+                            <rect x="56" y="34" width="50" height="26" rx="4" fill="#fff" stroke="#1a73e8"/>
+                            <text x="81" y="51" text-anchor="middle" font-size="9" fill="#1a73e8">Env 6</text>
+                            <rect x="112" y="34" width="50" height="26" rx="4" fill="#fff" stroke="#1a73e8"/>
+                            <text x="137" y="51" text-anchor="middle" font-size="9" fill="#1a73e8">Env 7</text>
+                            <rect x="168" y="34" width="50" height="26" rx="4" fill="#fff" stroke="#1a73e8"/>
+                            <text x="193" y="51" text-anchor="middle" font-size="9" fill="#1a73e8">Env 8</text>
+                        </g>
+                        <rect x="252" y="180" width="216" height="40" rx="8" fill="#fce8e6" stroke="#d93025"/>
+                        <text x="360" y="198" text-anchor="middle" font-size="10" font-weight="600" fill="#d93025">8-Layer Anti-Reward-Hacking</text>
+                        <text x="360" y="212" text-anchor="middle" font-size="8" fill="#d93025">Verify · Dedup · Allow-list · Monotonic · Exact</text>
+                        <!-- Arrow 2 -->
+                        <path d="M 487 140 L 525 140" stroke="#5f6368" stroke-width="1.5" marker-end="url(#arr-aws)" fill="none"/>
+                        <!-- Artifacts zone -->
+                        <rect x="530" y="40" width="150" height="200" rx="12" fill="#e6f4ea" stroke="#1e8e3e" stroke-width="1.5"/>
+                        <text x="605" y="65" text-anchor="middle" font-size="13" font-weight="600" fill="#1e8e3e">Published</text>
+                        <text x="605" y="82" text-anchor="middle" font-size="10" fill="#5f6368">HF Artifacts</text>
+                        <rect x="545" y="100" width="120" height="32" rx="6" fill="#fff" stroke="#1e8e3e"/>
+                        <text x="605" y="120" text-anchor="middle" font-size="10" fill="#3c4043">SFT Adapter</text>
+                        <rect x="545" y="140" width="120" height="32" rx="6" fill="#fff" stroke="#1e8e3e"/>
+                        <text x="605" y="160" text-anchor="middle" font-size="10" fill="#3c4043">GRPO Adapter</text>
+                        <rect x="545" y="180" width="120" height="32" rx="6" fill="#fff" stroke="#1e8e3e"/>
+                        <text x="605" y="200" text-anchor="middle" font-size="10" fill="#3c4043">Live HF Space</text>
+                    </svg>`,
+                },
+                'proj-leetcode-companion': {
+                    title: 'LeetCode Companion',
+                    tagline: 'AI-powered LeetCode tutor with streaming Gemini agents, formal complexity proofs, and multi-language annotated solutions.',
+                    tags: ['React', 'TypeScript', 'FastAPI', 'Gemini AI', 'SSE', 'crawl4ai', 'Docker'],
+                    links: [
+                        { label: 'Live Demo', url: 'https://leetcode.udaykp.dev', kind: 'primary' },
+                        { label: 'GitHub', url: 'https://github.com/UdayKiranPadhy/LeetcodeCompanion', kind: 'secondary' },
+                    ],
+                    problem: 'Most LeetCode solution lookups hand you the answer without teaching the reasoning. Learners get unblocked but never internalize the algorithmic patterns or learn how to think about complexity.',
+                    approach: 'Build an AI tutor that mimics expert pair-programming: stream a thought-process analysis with corrective feedback, formal mathematical complexity proofs, annotated code in multiple languages, and contextual follow-up chat — all powered by Gemini AI agents over Server-Sent Events.',
+                    solution: 'Full-stack architecture with a React + TypeScript frontend (KaTeX for math rendering, Highlight.js for code) and a FastAPI + Python backend using google-adk for agent orchestration and crawl4ai for robust problem extraction. SSE delivers content chunk-by-chunk so users see the tutor "thinking" instead of waiting for a blank screen.',
+                    impact: 'Deployed at leetcode.udaykp.dev with one-command Docker Compose. Serves multi-language solutions (Python / Java / JavaScript), formal Big-O proofs, contextual follow-up chat, and microphone input — turning a simple URL paste into a guided learning session.',
+                    perf: [
+                        { v: '3-Lang', l: 'Python · Java · JS' },
+                        { v: 'SSE', l: 'Real-Time Streaming' },
+                        { v: 'KaTeX', l: 'Formal Math Proofs' },
+                        { v: 'Live', l: 'leetcode.udaykp.dev' },
+                    ],
+                    heroDiagram: `<svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <marker id="arr-lc" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#5f6368"/>
+                            </marker>
+                            <marker id="arr-lc-stream" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#1a73e8"/>
+                            </marker>
+                        </defs>
+                        <!-- User input -->
+                        <rect x="15" y="100" width="115" height="80" rx="12" fill="#e8f0fe" stroke="#1a73e8" stroke-width="1.5"/>
+                        <text x="72" y="128" text-anchor="middle" font-size="11" font-weight="600" fill="#1a73e8">User</text>
+                        <text x="72" y="147" text-anchor="middle" font-size="9" fill="#5f6368">Pastes</text>
+                        <text x="72" y="160" text-anchor="middle" font-size="9" fill="#5f6368">Problem URL</text>
+                        <path d="M 130 140 L 165 140" stroke="#5f6368" stroke-width="1.5" marker-end="url(#arr-lc)" fill="none"/>
+                        <!-- Crawler -->
+                        <rect x="170" y="100" width="120" height="80" rx="12" fill="#fef7e0" stroke="#f9ab00" stroke-width="1.5"/>
+                        <text x="230" y="123" text-anchor="middle" font-size="11" font-weight="600" fill="#3c4043">crawl4ai</text>
+                        <text x="230" y="140" text-anchor="middle" font-size="9" fill="#5f6368">Headless Chrome</text>
+                        <text x="230" y="153" text-anchor="middle" font-size="9" fill="#5f6368">+ CSS Schemas</text>
+                        <text x="230" y="166" text-anchor="middle" font-size="9" fill="#5f6368">Extracts Problem</text>
+                        <path d="M 290 140 L 325 140" stroke="#5f6368" stroke-width="1.5" marker-end="url(#arr-lc)" fill="none"/>
+                        <!-- Gemini Backend -->
+                        <rect x="330" y="70" width="150" height="140" rx="12" fill="#e6f4ea" stroke="#1e8e3e" stroke-width="1.5"/>
+                        <text x="405" y="95" text-anchor="middle" font-size="11" font-weight="600" fill="#1e8e3e">FastAPI Backend</text>
+                        <text x="405" y="113" text-anchor="middle" font-size="10" font-weight="600" fill="#1e8e3e">Gemini Agent</text>
+                        <rect x="345" y="124" width="120" height="22" rx="4" fill="#fff" stroke="#1e8e3e"/>
+                        <text x="405" y="139" text-anchor="middle" font-size="9" fill="#3c4043">Thought Analysis</text>
+                        <rect x="345" y="151" width="120" height="22" rx="4" fill="#fff" stroke="#1e8e3e"/>
+                        <text x="405" y="166" text-anchor="middle" font-size="9" fill="#3c4043">Complexity Proof</text>
+                        <rect x="345" y="178" width="120" height="22" rx="4" fill="#fff" stroke="#1e8e3e"/>
+                        <text x="405" y="193" text-anchor="middle" font-size="9" fill="#3c4043">Multi-Lang Code</text>
+                        <!-- SSE arrow (animated dashes) -->
+                        <path d="M 482 140 L 528 140" stroke="#1a73e8" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arr-lc-stream)" fill="none">
+                            <animate attributeName="stroke-dashoffset" from="0" to="-16" dur="0.7s" repeatCount="indefinite"/>
+                        </path>
+                        <text x="505" y="128" text-anchor="middle" font-size="9" fill="#1a73e8" font-weight="700">SSE</text>
+                        <!-- React Frontend -->
+                        <rect x="533" y="50" width="150" height="180" rx="12" fill="#fef7f0" stroke="#fa7b17" stroke-width="1.5"/>
+                        <text x="608" y="78" text-anchor="middle" font-size="11" font-weight="600" fill="#fa7b17">React Frontend</text>
+                        <text x="608" y="94" text-anchor="middle" font-size="9" fill="#5f6368">Real-Time Stream</text>
+                        <rect x="548" y="104" width="120" height="22" rx="4" fill="#fff" stroke="#fa7b17"/>
+                        <text x="608" y="119" text-anchor="middle" font-size="9" fill="#3c4043">Thought Process</text>
+                        <rect x="548" y="131" width="120" height="22" rx="4" fill="#fff" stroke="#fa7b17"/>
+                        <text x="608" y="146" text-anchor="middle" font-size="9" fill="#3c4043">Math (KaTeX)</text>
+                        <rect x="548" y="158" width="120" height="22" rx="4" fill="#fff" stroke="#fa7b17"/>
+                        <text x="608" y="173" text-anchor="middle" font-size="9" fill="#3c4043">Code Solutions</text>
+                        <rect x="548" y="185" width="120" height="22" rx="4" fill="#fff" stroke="#fa7b17"/>
+                        <text x="608" y="200" text-anchor="middle" font-size="9" fill="#3c4043">Contextual Chat</text>
+                    </svg>`,
+                },
+                'proj-leetcode-solutions': {
+                    title: 'Leetcode Solutions Repository',
+                    tagline: 'Curated archive of algorithmic problem solutions with clear, didactic explanations.',
+                    tags: ['Python', 'Algorithms', 'Data Structures'],
+                    links: [
+                        { label: 'GitHub', url: 'https://github.com/UdayKiranPadhy/Leetcode', kind: 'secondary' },
+                    ],
+                    problem: 'Deeply learning algorithmic patterns requires articulating each solution, not just copying it. Without structured notes, problem-solving fluency plateaus.',
+                    approach: 'Maintain a curated repository of LeetCode solutions organized by problem, with consistent code style and concise commentary on the approach taken.',
+                    solution: 'Python implementations of LeetCode problems across data structures and algorithms — arrays, trees, graphs, DP, sliding windows — each annotated with the core insight that unlocks the optimal solution.',
+                    impact: 'Acts as a personal reference and a public demonstration of problem-solving fluency. The repo doubles as a study guide and a recruiter-facing artifact.',
+                    perf: [
+                        { v: 'Multi-Topic', l: 'DS · Algorithms · DP' },
+                        { v: 'Python', l: 'Primary Language' },
+                    ],
+                },
+                'proj-eye-tracking': {
+                    title: 'Computer Access for Physically Challenged Users',
+                    tagline: 'Hands-free computing via eye-tracking and voice control — software-only, no specialized hardware.',
+                    tags: ['Python', 'OpenCV', 'Computer Vision', 'NLP'],
+                    links: [],
+                    problem: 'Accessibility tools for users with motor impairments often require costly specialized hardware or extensive setup, putting hands-free computing out of reach for many.',
+                    approach: 'Build a software-only system using off-the-shelf webcams and microphones, combining computer vision (eye tracking) with NLP (voice commands) for cursor control and command execution.',
+                    solution: 'OpenCV-based eye-tracking system mapping gaze direction to cursor position, paired with real-time voice recognition for clicks, typing, and command execution.',
+                    impact: 'Demonstrated ~60% cursor-control accuracy in early prototypes, enabling hands-free computer use without specialized hardware — a software-only path to assistive computing.',
+                    perf: [
+                        { v: '60%', l: 'Tracking Accuracy' },
+                        { v: 'Webcam', l: 'No Special Hardware' },
+                    ],
+                },
+            });
+
+            renderProjects();
+
             // 1. Intersection Observer for standard Fade-up Animations (Cards, Icons)
             const animateElements = document.querySelectorAll('.animate-up');
             const elementObserver = new IntersectionObserver((entries) => {
@@ -1899,17 +2419,81 @@
                 const data = projectDetails[id];
                 if (!data) return;
 
-                // Populate data
+                // Core prose sections
                 document.getElementById('modal-title').textContent = data.title;
-                document.getElementById('modal-problem').textContent = data.problem;
-                document.getElementById('modal-approach').textContent = data.approach;
-                document.getElementById('modal-solution').textContent = data.solution;
-                document.getElementById('modal-impact').textContent = data.impact;
-                document.getElementById('modal-diagram').innerHTML = data.diagram;
+                document.getElementById('modal-problem').textContent = data.problem || '';
+                document.getElementById('modal-approach').textContent = data.approach || '';
+                document.getElementById('modal-solution').textContent = data.solution || '';
+                document.getElementById('modal-impact').textContent = data.impact || '';
 
+                // Optional: tagline
+                const taglineEl = document.getElementById('modal-tagline');
+                if (data.tagline) {
+                    taglineEl.textContent = data.tagline;
+                    taglineEl.style.display = 'block';
+                } else {
+                    taglineEl.style.display = 'none';
+                    taglineEl.textContent = '';
+                }
+
+                // Optional: action link buttons
+                const linksEl = document.getElementById('modal-links');
+                linksEl.innerHTML = '';
+                if (Array.isArray(data.links) && data.links.length) {
+                    data.links.forEach(l => {
+                        const a = document.createElement('a');
+                        a.className = `modal-link-btn ${l.kind === 'primary' ? 'primary' : 'secondary'}`;
+                        a.href = l.url;
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.innerHTML = `${pickLinkIcon(l.label)}<span>${l.label}</span>`;
+                        linksEl.appendChild(a);
+                    });
+                    linksEl.style.display = 'flex';
+                } else {
+                    linksEl.style.display = 'none';
+                }
+
+                // Optional: tech tag chips
+                const tagsEl = document.getElementById('modal-tags');
+                tagsEl.innerHTML = '';
+                if (Array.isArray(data.tags) && data.tags.length) {
+                    data.tags.forEach(t => {
+                        const span = document.createElement('span');
+                        span.className = 'skill-tag';
+                        span.textContent = t;
+                        tagsEl.appendChild(span);
+                    });
+                    tagsEl.style.display = 'flex';
+                } else {
+                    tagsEl.style.display = 'none';
+                }
+
+                // Diagram: hero (full-width) vs narrow (right column legacy)
+                const heroEl = document.getElementById('modal-hero-diagram');
+                const narrowWrap = document.getElementById('modal-narrow-diagram-wrap');
+                const narrowDiag = document.getElementById('modal-diagram');
+                if (data.heroDiagram) {
+                    heroEl.innerHTML = data.heroDiagram;
+                    heroEl.style.display = 'flex';
+                    narrowWrap.style.display = 'none';
+                    narrowDiag.innerHTML = '';
+                } else if (data.diagram) {
+                    heroEl.innerHTML = '';
+                    heroEl.style.display = 'none';
+                    narrowWrap.style.display = 'block';
+                    narrowDiag.innerHTML = data.diagram;
+                } else {
+                    heroEl.innerHTML = '';
+                    heroEl.style.display = 'none';
+                    narrowWrap.style.display = 'none';
+                    narrowDiag.innerHTML = '';
+                }
+
+                // Performance / highlight cards
                 const perfContainer = document.getElementById('modal-perf');
                 perfContainer.innerHTML = '';
-                data.perf.forEach(p => {
+                (data.perf || []).forEach(p => {
                     const card = document.createElement('div');
                     card.className = 'perf-card';
                     card.innerHTML = `<span class="perf-val">${p.v}</span><span class="perf-label">${p.l}</span>`;
@@ -1922,6 +2506,10 @@
                 modal.classList.add('open');
                 document.body.style.overflow = 'hidden';
 
+                // Reset scroll to top so the new modal opens at the heading
+                const scrollWrap = modal.querySelector('.modal-scroll');
+                if (scrollWrap) scrollWrap.scrollTop = 0;
+
                 // Trigger animations
                 let modalQueue = Promise.resolve();
                 document.querySelectorAll('.type-animate-modal').forEach(el => {
@@ -1929,9 +2517,27 @@
                 });
             }
 
-            closeModalBtn.addEventListener('click', () => {
+            function closeModal() {
                 modal.classList.remove('open');
                 document.body.style.overflow = '';
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+
+            // Click outside the modal-container closes the modal
+            modal.addEventListener('click', (e) => {
+                if (!e.target.closest('.modal-container')) closeModal();
+            });
+
+            // Esc key closes the modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+
+            // Mouse-following blue accent on the modal overlay
+            modal.addEventListener('mousemove', (e) => {
+                modal.style.setProperty('--mouse-x', `${e.clientX}px`);
+                modal.style.setProperty('--mouse-y', `${e.clientY}px`);
             });
 
             document.querySelectorAll('.timeline .bullet-list li').forEach(li => {
