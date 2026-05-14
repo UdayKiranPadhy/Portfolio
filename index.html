@@ -1160,7 +1160,6 @@
             <li><a href="#projects" class="nav-link">Projects</a></li>
             <li><a href="#experience" class="nav-link">Experience</a></li>
             <li><a href="#education" class="nav-link">Education</a></li>
-            <li><a href="#certifications" class="nav-link">Certifications</a></li>
             <li><a href="#achievements" class="nav-link">Achievements</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -1304,11 +1303,37 @@
             </div>
 
             <div class="right-col timeline">
-                <!-- Job 1 -->
+                <!-- Senior Software Engineer -->
+                <div class="timeline-item animate-up">
+                    <div class="timeline-header">
+                        <h3 class="role-title type-animate">Senior Software Engineer</h3>
+                        <span class="date-badge type-animate">Aug 2025 - Present</span>
+                    </div>
+                    <a href="https://www.gainsight.com" target="_blank">
+                        <div class="company-name type-animate">Gainsight</div>
+                    </a>
+                    <ul class="bullet-list">
+                        <li data-detail-id="exp0-1"><span class="type-animate">Led delivery of enterprise-grade product
+                                features that helped land strategic customers including Intuit and Adobe, prioritizing
+                                scalability, security, and SLA-driven reliability for high-stakes deployments.</span>
+                        </li>
+                        <li data-detail-id="exp0-2"><span class="type-animate">Built LLM-powered product capabilities
+                                backed by Retrieval-Augmented Generation (RAG) pipelines, grounding model responses in
+                                customer data to deliver accurate, context-aware AI experiences at scale.</span></li>
+                        <li data-detail-id="exp0-3"><span class="type-animate">Remediated critical Python CVE security
+                                vulnerabilities flagged by Snyk, hardening the platform's dependency footprint and
+                                keeping the Snyk dashboard green across automated scans.</span></li>
+                        <li data-detail-id="exp0-4"><span class="type-animate">Promoted internal APIs to public-facing
+                                endpoints under proper authentication and authorization, enabling customers to
+                                integrate the platform into their own systems and workflows.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Software Engineer -->
                 <div class="timeline-item animate-up">
                     <div class="timeline-header">
                         <h3 class="role-title type-animate">Software Engineer</h3>
-                        <span class="date-badge type-animate">Aug 2023 - Present</span>
+                        <span class="date-badge type-animate">Aug 2023 - Aug 2025</span>
                     </div>
                     <a href="https://www.gainsight.com" target="_blank">
                         <div class="company-name type-animate">Gainsight</div>
@@ -1340,7 +1365,7 @@
                     </ul>
                 </div>
 
-                <!-- Job 2 -->
+                <!-- Associate Software Engineer -->
                 <div class="timeline-item animate-up">
                     <div class="timeline-header">
                         <h3 class="role-title type-animate">Associate Software Engineer</h3>
@@ -1399,29 +1424,6 @@
                     <div class="company-name type-animate">Kendriya Vidyalaya</div>
                     <p class="type-animate">Completed Higher Secondary Education with a focus on Science and
                         Mathematics.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications" class="section-wrapper">
-            <div class="left-col">
-                <div class="icon-container animate-up">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="8" r="7"></circle>
-                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                    </svg>
-                </div>
-                <span class="section-title type-animate">Certifications</span>
-            </div>
-
-            <div class="right-col grid-2">
-                <div class="minimal-card animate-up">
-                    <h4 class="type-animate" style="margin-bottom: 0.5rem; font-size: 1.25rem;">Google Associate Cloud
-                        Developer</h4>
-                    <p class="type-animate" style="font-size: 1.05rem; margin-bottom: 0;">Google Cloud (GCP)• Issued
-                        2024</p>
                 </div>
             </div>
         </section>
@@ -1598,6 +1600,162 @@
 
             // Detailed content database
             const projectDetails = {
+                'exp0-1': {
+                    title: 'Enterprise-Grade Features for Strategic Accounts',
+                    problem: 'Onboarding large enterprise customers like Intuit and Adobe required deeper guarantees around scale, security, and reliability than the platform offered out of the box.',
+                    approach: 'Partnered with product and security stakeholders to identify enterprise gaps, then prioritized capabilities that aligned with high-value account requirements.',
+                    solution: 'Led design and delivery of enterprise-grade capabilities — hardened access controls, audit-grade observability, and SLA-aligned reliability patterns — that met the bar for Fortune 500 deployments.',
+                    impact: 'Unblocked the sales motion with strategic Fortune 500 accounts including Intuit and Adobe, expanding the platform\'s enterprise footprint.',
+                    perf: [{ v: 'Fortune 500', l: 'Customers Won' }, { v: 'Enterprise', l: 'SLA Grade' }],
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
+                        <rect x="10" y="20" width="60" height="22" rx="3" fill="#e8f0fe" stroke="#1a73e8"/>
+                        <text x="40" y="35" text-anchor="middle" font-size="9" fill="#1a73e8" font-weight="bold">Intuit</text>
+
+                        <rect x="10" y="50" width="60" height="22" rx="3" fill="#e8f0fe" stroke="#1a73e8"/>
+                        <text x="40" y="65" text-anchor="middle" font-size="9" fill="#1a73e8" font-weight="bold">Adobe</text>
+
+                        <rect x="10" y="80" width="60" height="22" rx="3" fill="#e8f0fe" stroke="#1a73e8"/>
+                        <text x="40" y="95" text-anchor="middle" font-size="8" fill="#1a73e8">Enterprise+</text>
+
+                        <path d="M70,31 L110,55" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+                        <path d="M70,61 L110,62" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+                        <path d="M70,91 L110,72" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <rect x="115" y="40" width="80" height="45" rx="5" fill="#fef7e0" stroke="#f9ab00"/>
+                        <text x="155" y="60" text-anchor="middle" font-size="9" font-weight="bold">Platform</text>
+                        <text x="155" y="74" text-anchor="middle" font-size="7">(Scale / Security / SLA)</text>
+
+                        <path d="M195,52 L225,30" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+                        <path d="M195,62 L225,62" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+                        <path d="M195,72 L225,92" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <rect x="230" y="18" width="60" height="20" rx="3" fill="#e6f4ea" stroke="#1e8e3e"/>
+                        <text x="260" y="32" text-anchor="middle" font-size="7" fill="#1e8e3e">Scale</text>
+                        <rect x="230" y="52" width="60" height="20" rx="3" fill="#e6f4ea" stroke="#1e8e3e"/>
+                        <text x="260" y="66" text-anchor="middle" font-size="7" fill="#1e8e3e">Security</text>
+                        <rect x="230" y="82" width="60" height="20" rx="3" fill="#e6f4ea" stroke="#1e8e3e"/>
+                        <text x="260" y="96" text-anchor="middle" font-size="7" fill="#1e8e3e">Reliability</text>
+
+                        <defs>
+                            <marker id="arr" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#5f6368" />
+                            </marker>
+                        </defs>
+                    </svg>`
+                },
+                'exp0-2': {
+                    title: 'RAG-Powered LLM Product Features',
+                    problem: 'LLMs alone produced ungrounded, hallucination-prone answers, making them unsuitable for product surfaces that demand accuracy over customer-specific data.',
+                    approach: 'Adopted a Retrieval-Augmented Generation (RAG) pattern to ground LLM outputs in trusted, customer-owned data sources at query time.',
+                    solution: 'Built end-to-end RAG pipelines — embedding generation, vector retrieval, context assembly, and prompt orchestration — and wired them into customer-facing product features.',
+                    impact: 'Delivered contextual, source-grounded AI experiences in production, reducing hallucinations and earning customer trust in AI-driven features.',
+                    perf: [{ v: 'Grounded', l: 'AI Responses' }, { v: 'Production', l: 'Deployment' }],
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
+                        <rect x="5" y="50" width="50" height="25" rx="3" fill="#e8f0fe" stroke="#1a73e8"/>
+                        <text x="30" y="66" text-anchor="middle" font-size="8" fill="#1a73e8" font-weight="bold">Query</text>
+
+                        <path d="M55,62 L85,62" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <rect x="90" y="25" width="70" height="28" rx="3" fill="#fef7e0" stroke="#f9ab00"/>
+                        <text x="125" y="42" text-anchor="middle" font-size="8" font-weight="bold">Vector</text>
+                        <text x="125" y="51" text-anchor="middle" font-size="7">Retrieval</text>
+
+                        <rect x="90" y="73" width="70" height="28" rx="3" fill="#fce8e6" stroke="#d93025"/>
+                        <text x="125" y="89" text-anchor="middle" font-size="8" font-weight="bold">Customer</text>
+                        <text x="125" y="98" text-anchor="middle" font-size="7">Data Store</text>
+
+                        <path d="M125,73 L125,55" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <path d="M160,42 L188,58" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+                        <rect x="190" y="48" width="55" height="28" rx="3" fill="#f8f9fa" stroke="#3c4043"/>
+                        <text x="217" y="66" text-anchor="middle" font-size="9" font-weight="bold">LLM</text>
+
+                        <path d="M245,62 L268,62" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <rect x="270" y="50" width="25" height="25" rx="3" fill="#e6f4ea" stroke="#1e8e3e"/>
+                        <text x="282" y="66" text-anchor="middle" font-size="7" fill="#1e8e3e">Ans</text>
+
+                        <defs>
+                            <marker id="arr" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#5f6368" />
+                            </marker>
+                        </defs>
+                    </svg>`
+                },
+                'exp0-3': {
+                    title: 'Python CVE Remediation & Snyk Hygiene',
+                    problem: 'Critical Python CVEs were being flagged by Snyk scans, putting compliance posture and customer trust at risk on enterprise deployments.',
+                    approach: 'Triaged CVEs by severity and exploitability, then upgraded or replaced vulnerable dependencies while validating no functional regressions.',
+                    solution: 'Patched critical CVEs across the Python dependency tree, refactored code where direct upgrades were blocked, and tightened the dependency update pipeline so new findings get addressed before they accumulate.',
+                    impact: 'Cleared critical and high-severity findings, kept the Snyk dashboard green across automated scans, and protected enterprise deployments from known vulnerabilities.',
+                    perf: [{ v: 'Critical', l: 'CVEs Fixed' }, { v: 'Green', l: 'Snyk Dashboard' }],
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
+                        <rect x="10" y="45" width="55" height="30" rx="3" fill="#fce8e6" stroke="#d93025"/>
+                        <text x="37" y="60" text-anchor="middle" font-size="8" fill="#d93025" font-weight="bold">Snyk</text>
+                        <text x="37" y="71" text-anchor="middle" font-size="7" fill="#d93025">Findings</text>
+
+                        <path d="M65,60 L90,60" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <rect x="95" y="45" width="60" height="30" rx="3" fill="#fef7e0" stroke="#f9ab00"/>
+                        <text x="125" y="60" text-anchor="middle" font-size="8" font-weight="bold">Triage</text>
+                        <text x="125" y="71" text-anchor="middle" font-size="7">(Severity)</text>
+
+                        <path d="M155,60 L180,60" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <rect x="185" y="45" width="60" height="30" rx="3" fill="#e8f0fe" stroke="#1a73e8"/>
+                        <text x="215" y="60" text-anchor="middle" font-size="8" fill="#1a73e8" font-weight="bold">Patch /</text>
+                        <text x="215" y="71" text-anchor="middle" font-size="7" fill="#1a73e8">Refactor</text>
+
+                        <path d="M245,60 L268,60" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <rect x="270" y="48" width="25" height="25" rx="3" fill="#e6f4ea" stroke="#1e8e3e"/>
+                        <text x="282" y="64" text-anchor="middle" font-size="7" fill="#1e8e3e">OK</text>
+
+                        <defs>
+                            <marker id="arr" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#5f6368" />
+                            </marker>
+                        </defs>
+                    </svg>`
+                },
+                'exp0-4': {
+                    title: 'Public API for Customer Integrations',
+                    problem: 'Internal APIs powered the product but were locked behind internal trust boundaries, blocking customers who wanted to integrate the platform into their own systems and workflows.',
+                    approach: 'Audited internal APIs for safety, designed authentication and authorization, scoped permissions, and rate-limited usage so the endpoints could be safely exposed to external consumers.',
+                    solution: 'Promoted internal APIs to a public surface under proper authentication and authorization, with scoped tokens, rate limiting, and versioning so customers could build integrations against a stable contract.',
+                    impact: 'Unlocked customer-built integrations and partner workflows on top of the platform, expanding its surface area as a programmable product rather than a closed app.',
+                    perf: [{ v: 'Public', l: 'API Surface' }, { v: 'AuthZ-Gated', l: 'Access' }],
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
+                        <rect x="10" y="20" width="55" height="22" rx="3" fill="#e8f0fe" stroke="#1a73e8"/>
+                        <text x="37" y="35" text-anchor="middle" font-size="8" fill="#1a73e8" font-weight="bold">Customer</text>
+
+                        <rect x="10" y="50" width="55" height="22" rx="3" fill="#e8f0fe" stroke="#1a73e8"/>
+                        <text x="37" y="65" text-anchor="middle" font-size="8" fill="#1a73e8" font-weight="bold">Partner</text>
+
+                        <rect x="10" y="80" width="55" height="22" rx="3" fill="#e8f0fe" stroke="#1a73e8"/>
+                        <text x="37" y="95" text-anchor="middle" font-size="8" fill="#1a73e8" font-weight="bold">Integrator</text>
+
+                        <path d="M65,31 L100,55" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+                        <path d="M65,61 L100,62" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+                        <path d="M65,91 L100,72" stroke="#5f6368" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <rect x="105" y="45" width="70" height="32" rx="5" fill="#fef7e0" stroke="#f9ab00"/>
+                        <text x="140" y="60" text-anchor="middle" font-size="8" font-weight="bold">AuthN / AuthZ</text>
+                        <text x="140" y="72" text-anchor="middle" font-size="7">+ Rate Limit</text>
+
+                        <path d="M175,61 L200,61" stroke="#5f6368" stroke-width="1.5" marker-end="url(#arr)"/>
+
+                        <rect x="205" y="45" width="80" height="32" rx="5" fill="#e6f4ea" stroke="#1e8e3e"/>
+                        <text x="245" y="60" text-anchor="middle" font-size="9" fill="#1e8e3e" font-weight="bold">Public API</text>
+                        <text x="245" y="72" text-anchor="middle" font-size="7" fill="#1e8e3e">(Internal Services)</text>
+
+                        <defs>
+                            <marker id="arr" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#5f6368" />
+                            </marker>
+                        </defs>
+                    </svg>`
+                },
                 'exp1-1': {
                     title: 'Agentic AI Orchestration with LangGraph',
                     problem: 'Standard linear LLM chains were unable to handle non-linear business logic, requiring complex state management and iterative reasoning cycles.',
@@ -1605,7 +1763,7 @@
                     solution: 'Architected multi-step AI Agents using LangGraph, integrating stateful persistence and tool-calling capabilities to automate cyclic and complex reasoning tasks.',
                     impact: 'Automated high-level decision-making processes, reducing manual intervention in core business logic and enabling more robust, error-correcting AI workflows.',
                     perf: [{ v: '95%', l: 'Decision Accuracy' }, { v: 'Automated', l: 'Core Logic' }],
-                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <circle cx="30" cy="60" r="20" fill="#e8f0fe" stroke="#1a73e8"/>
                         <text x="30" y="63" text-anchor="middle" font-size="8" fill="#1a73e8" font-weight="bold">Start</text>
 
@@ -1638,7 +1796,7 @@
                     solution: 'Implemented an OIDC/SAML-based Single Sign-On (SSO) solution, integrating disparate services into a central identity provider for secure and simplified login.',
                     impact: 'Drastically improved user retention through seamless navigation and centralized security controls, reducing support tickets related to login issues.',
                     perf: [{ v: '100%', l: 'Unified Access' }, { v: 'Seamless', l: 'UX Integration' }],
-                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="45" width="50" height="30" rx="3" fill="#e8f0fe" stroke="#1a73e8"/>
                         <text x="35" y="65" text-anchor="middle" font-size="8" fill="#1a73e8" font-weight="bold">User</text>
 
@@ -1674,7 +1832,7 @@
                     solution: 'Engineered a high-performance API layer using asynchronous processing and optimized load balancing to distribute traffic across elastic compute clusters.',
                     impact: 'Successfully maintained sub-millisecond latency for critical endpoints while supporting extreme traffic spikes without system degradation.',
                     perf: [{ v: '1M+', l: 'Req/Sec Capacity' }, { v: '<50ms', l: 'P99 Latency' }],
-                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="5" y="45" width="40" height="30" rx="3" fill="#e8f0fe" stroke="#1a73e8"/>
                         <text x="25" y="65" text-anchor="middle" font-size="7" fill="#1a73e8">Global</text>
                         <text x="25" y="73" text-anchor="middle" font-size="6" fill="#1a73e8">Traffic</text>
@@ -1716,7 +1874,7 @@
                     solution: 'Engineered a suite of high-performance microservices using FastAPI for the backend and React.js for the frontend, optimized with efficient Docker resource tagging and asynchronous I/O.',
                     impact: 'Improved system throughput and operational oversight, allowing the infrastructure to handle increased load with lower compute overhead.',
                     perf: [{ v: '5%', l: 'Scalability Increase' }, { v: '10%', l: 'Resource Efficiency' }],
-                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
         <rect x="10" y="40" width="60" height="40" rx="4" fill="#e8f0fe" stroke="#1a73e8"/>
         <text x="40" y="60" text-anchor="middle" font-size="8" font-weight="bold" fill="#1a73e8">React.js</text>
         <text x="40" y="70" text-anchor="middle" font-size="7" fill="#1a73e8">Frontend</text>
@@ -1751,7 +1909,7 @@
                     solution: 'Developed a robust monitoring suite using CloudWatch and OpenTelemetry to track system health, coupled with automated alerting for proactive anomaly detection across AI inference pipelines.',
                     impact: 'Achieved high system reliability with a significant reduction in Mean Time to Recovery (MTTR) through real-time dashboards and early warning systems.',
                     perf: [{ v: '99.9%', l: 'System Uptime' }, { v: 'Proactive', l: 'Anomaly Detection' }],
-                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="25" width="70" height="70" rx="5" fill="#f8f9fa" stroke="#3c4043" stroke-dasharray="3"/>
                         <text x="45" y="40" text-anchor="middle" font-size="7" fill="#5f6368">Workloads</text>
                         <rect x="20" y="48" width="50" height="15" rx="2" fill="#e8f0fe" stroke="#1a73e8"/>
@@ -1791,7 +1949,7 @@
                     solution: 'Developed a scalable segmentation service utilizing optimized database queries and background workers to process millions of user profiles with minimal latency.',
                     impact: 'Empowered the marketing team with precise targeting capabilities, resulting in significantly higher conversion rates and improved user retention.',
                     perf: [{ v: 'Millions', l: 'Users Segmented' }, { v: '2x', l: 'Engagement Boost' }],
-                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="40" width="55" height="40" rx="4" fill="#f1f3f4" stroke="#5f6368"/>
                         <text x="37" y="60" text-anchor="middle" font-size="8" fill="#3c4043" font-weight="bold">User</text>
                         <text x="37" y="70" text-anchor="middle" font-size="8" fill="#3c4043" font-weight="bold">Data Lake</text>
@@ -1828,7 +1986,7 @@
                     solution: 'Successfully ported legacy logic to a modern framework (Python/FastAPI), replacing monolithic patterns with scalable components and optimized data access layers.',
                     impact: 'Significantly improved developer productivity by reducing the complexity of the codebase and decreasing API response times.',
                     perf: [{ v: '40%', l: 'Codebase Reduction' }, { v: '25%', l: 'Perf Improvement' }],
-                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="30" width="80" height="70" rx="4" fill="#fce8e6" stroke="#d93025"/>
                         <text x="50" y="50" text-anchor="middle" font-size="8" fill="#d93025" font-weight="bold">Legacy</text>
                         <text x="50" y="65" text-anchor="middle" font-size="7" fill="#d93025">Monolithic</text>
@@ -1871,7 +2029,7 @@
                             l: "Environment Parity"
                         }
                     ],
-                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="5" y="5" width="290" height="110" rx="8" fill="none" stroke="#dadce0" stroke-dasharray="4"/>
                         <text x="10" y="20" font-size="8" fill="#70757a">Local Developer Machine</text>
                         
@@ -1907,7 +2065,7 @@
                     solution: 'Engineered a robust i18n framework using industry-standard libraries to handle dynamic content translation, RTL (Right-to-Left) support, and localized date/currency formatting.',
                     impact: 'Enabled seamless market entry into new regions, ensuring 100% UI localization and a consistent user experience for a global audience.',
                     perf: [{ v: '100%', l: 'Global Accessibility' }, { v: 'Multi-Region', l: 'Deployment Ready' }],
-                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="40" width="60" height="40" rx="4" fill="#e8f0fe" stroke="#1a73e8"/>
                         <text x="40" y="60" text-anchor="middle" font-size="9" fill="#1a73e8" font-weight="bold">UI Layer</text>
                         <text x="40" y="72" text-anchor="middle" font-size="7" fill="#1a73e8">(React/TS)</text>
@@ -1941,7 +2099,7 @@
                     solution: 'Engineered a CI/CD-integrated test suite using Pytest for backend logic and Playwright for E2E user flows, ensuring 100% coverage on critical paths.',
                     impact: 'Drastically reduced regression-related hotfixes and empowered the team to deploy new features with high confidence and speed.',
                     perf: [{ v: '85%', l: 'Code Coverage' }, { v: '2x', l: 'Feature Velocity' }],
-                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <polygon points="150,10 230,100 70,100" fill="#f8f9fa" stroke="#3c4043" stroke-width="1.5"/>
                         
                         <line x1="110" y1="40" x2="190" y2="40" stroke="#dadce0" stroke-width="1"/>
@@ -1976,7 +2134,7 @@
                     solution: 'Implemented CloudFormation and configuration management scripts to provision cloud resources and microservice environments, ensuring repeatable and version-controlled infrastructure.',
                     impact: 'Eliminated manual configuration drift and significantly accelerated the path from code commit to production-ready infrastructure.',
                     perf: [{ v: '30%', l: 'Deployment Time Reduction' }, { v: 'Zero', l: 'Manual Config Errors' }],
-                    diagram: `<svg viewBox="0 0 300 120" width="100%">
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
         <rect x="10" y="40" width="55" height="40" rx="4" fill="#e8f0fe" stroke="#1a73e8"/>
         <text x="37" y="60" text-anchor="middle" font-size="8" fill="#1a73e8" font-weight="bold">IaC Code</text>
         <text x="37" y="70" text-anchor="middle" font-size="7" fill="#1a73e8">(CloudFormation)</text>
