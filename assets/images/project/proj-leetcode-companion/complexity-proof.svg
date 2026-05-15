@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d93025"/>
+      <stop offset="100%" stop-color="#b06000"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#g)"/>
+  <text x="640" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="800" fill="#ffffff" text-anchor="middle">Complexity Proof</text>
+  <text x="640" y="400" font-family="ui-monospace, monospace" font-size="24" fill="rgba(255,255,255,0.88)" text-anchor="middle">proj-leetcode-companion / complexity-proof.svg</text>
+</svg>

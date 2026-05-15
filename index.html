@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Set theme before paint to avoid flash; honors localStorage, falls back to system preference -->
+    <!-- Set theme + js-enabled flag before paint; theme honors localStorage then system pref -->
     <script>
         (function () {
+            document.documentElement.classList.add('js-enabled');
             try {
                 var stored = localStorage.getItem('theme');
                 var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -34,16 +35,16 @@
     <meta property="og:description"
         content="Building scalable, robust web applications and solving complex system architecture problems.">
     <meta property="og:image"
-        content="https://placehold.co/1200x630/1a73e8/ffffff.png?text=Uday+Kiran%0ASenior+Software+Engineer&font=open-sans">
+        content="https://placehold.co/1200x630/1a73e8/ffffff.png?text=Uday+Kiran%0ASenior+Software+Engineer&amp;font=open-sans">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="Uday Kiran Padhy Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://udaykp.dev/">
     <meta property="twitter:title" content="Uday Kiran | Senior Software Engineer">
     <meta property="twitter:description"
         content="Building scalable, robust web applications and solving complex system architecture problems.">
-    <meta property="twitter:image"
-        content="https://placehold.co/1200x630/1a73e8/ffffff.png?text=Uday+Kiran%0ASenior+Software+Engineer&font=open-sans">
+    <meta name="twitter:image"
+        content="https://placehold.co/1200x630/1a73e8/ffffff.png?text=Uday+Kiran%0ASenior+Software+Engineer&amp;font=open-sans">
 
     <!-- Custom SVG Favicon (Terminal Icon) -->
     <link rel="icon"
@@ -365,10 +366,11 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(2rem, 9vw, 4rem);
             letter-spacing: -1.5px;
             margin-bottom: 1rem;
             color: var(--text-main);
+            word-break: break-word;
         }
 
         .hero h2 {
@@ -1050,17 +1052,6 @@
             gap: 0.5rem;
             margin-top: 1.25rem;
             flex-wrap: wrap;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            pointer-events: none;
-        }
-
-        /* Reveal action buttons only after the last tech tag has finished typing */
-        .project-card:has(.skills-container .skill-tag:last-child.typed) .card-actions {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
         }
 
         .card-action-chip {
@@ -1193,6 +1184,233 @@
             max-height: 360px;
         }
 
+        /* ===== Carousel inside the diagram-hero container ===== */
+        .carousel-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem 1.5rem 2.25rem;
+        }
+
+        .carousel-viewport {
+            overflow: hidden;
+            width: 100%;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 100%;
+            transition: transform 0.4s ease;
+            will-change: transform;
+        }
+
+        html.js-enabled .carousel-track.no-transition {
+            transition: none;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-in;
+            padding: 0 0.25rem;
+            box-sizing: border-box;
+        }
+
+        .carousel-slide svg {
+            width: 100%;
+            height: auto;
+            max-height: 320px;
+        }
+
+        .carousel-slide img {
+            max-width: 100%;
+            max-height: 320px;
+            object-fit: contain;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            padding: 0;
+            transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        }
+
+        .carousel-nav svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .carousel-nav:hover {
+            background: var(--surface-muted);
+            color: var(--blue-accent);
+        }
+
+        .carousel-prev {
+            left: 0.5rem;
+        }
+
+        .carousel-next {
+            right: 0.5rem;
+        }
+
+        .carousel-nav.hidden {
+            display: none;
+        }
+
+        .carousel-label {
+            position: absolute;
+            top: 0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--blue-accent);
+            font-weight: 700;
+            background: var(--surface-color);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            pointer-events: none;
+            white-space: nowrap;
+            max-width: calc(100% - 6rem);
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 0.75rem;
+        }
+
+        .carousel-dots.hidden {
+            display: none;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-color);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .carousel-dot:hover {
+            transform: scale(1.2);
+        }
+
+        .carousel-dot.active {
+            background: var(--blue-accent);
+        }
+
+        /* ===== Lightbox (click-to-enlarge slides) ===== */
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 3.5rem 1.5rem 4rem;
+            cursor: zoom-out;
+        }
+
+        #lightbox.open {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 95vw;
+            max-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+        }
+
+        .lightbox-content img,
+        .lightbox-content svg {
+            max-width: 100%;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            background: var(--modal-surface);
+            border-radius: 12px;
+        }
+
+        .lightbox-content svg {
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+            max-width: 90vw;
+            text-align: center;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .carousel-track {
+                transition: none;
+            }
+        }
+
         /* Hide backgrounds/borders of empty tags before typing starts */
         .skill-tag.type-animate:not(.typed) {
             background-color: transparent !important;
@@ -1205,23 +1423,24 @@
             color: transparent !important;
         }
 
-        /* type-animate elements start hidden; JS classifies into typewriter (About) or fade (rest) */
-        .type-animate {
+        /* type-animate elements start hidden only when JS is enabled; classified into typewriter (About) or fade (rest) at runtime */
+        html.js-enabled .type-animate {
             opacity: 0;
         }
 
-        /* About-section elements use the typewriter — parent stays visible while char spans manage reveal */
-        .type-animate.is-typewriter {
+        /* About-section elements use the typewriter — parent stays visible while char spans manage reveal.
+           Prefix with html.js-enabled so this rule beats the .type-animate gate above it. */
+        html.js-enabled .type-animate.is-typewriter {
             opacity: 1;
         }
 
         /* Rest of the page uses a simple fade-up when entering the viewport */
-        .type-animate.is-fade {
+        html.js-enabled .type-animate.is-fade {
             transform: translateY(8px);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .type-animate.is-fade.typed {
+        html.js-enabled .type-animate.is-fade.typed {
             opacity: 1;
             transform: translateY(0);
         }
@@ -1296,10 +1515,6 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-
             .hero-cta-container,
             .contact-action-btns {
                 flex-direction: column;
@@ -1420,9 +1635,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&amp;display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -1483,7 +1698,7 @@
                     </svg>
                     Let's Work Together
                 </a>
-                <a href="https://drive.usercontent.google.com/uc?id=18l_inga3DYXRfNZccwKbC1VdaEO27Gnz&export=download"
+                <a href="https://drive.usercontent.google.com/uc?id=18l_inga3DYXRfNZccwKbC1VdaEO27Gnz&amp;export=download"
                     download class="btn-secondary">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -1497,19 +1712,19 @@
 
             <!-- Hero Social Links -->
             <div class="social-links hero-fade-up">
-                <a href="https://github.com/UdayKiranPadhy" target="_blank" aria-label="GitHub">
+                <a href="https://github.com/UdayKiranPadhy" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <svg viewBox="0 0 24 24">
                         <path
                             d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                     </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/udaykiranpadhy/" target="_blank" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/udaykiranpadhy/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <svg viewBox="0 0 24 24">
                         <path
                             d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                     </svg>
                 </a>
-                <a href="https://leetcode.com/u/IamUday/" target="_blank" aria-label="LeetCode">
+                <a href="https://leetcode.com/u/IamUday/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
                     <svg viewBox="0 0 24 24">
                         <path
                             d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.536-.536.554-1.387.039-1.901l-2.609-2.636a5.055 5.055 0 0 0-3.765-1.553c-1.313 0-2.606.514-3.541 1.464l-4.332 4.38a5.055 5.055 0 0 0-1.464 3.541c0 1.313.514 2.606 1.464 3.541l4.332 4.363c.935.95 2.228 1.464 3.541 1.464s2.606-.514 3.541-1.464l2.697-2.607c.514-.514.496-1.365-.039-1.9-.535-.535-1.386-.553-1.9-.038zm3.193-4.885h-10.1c-.722 0-1.312.59-1.312 1.312s.59 1.312 1.312 1.312h10.1c.722 0 1.312-.59 1.312-1.312s-.59-1.312-1.312-1.312z" />
@@ -1531,29 +1746,26 @@
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
                 </div>
-                <span class="section-title type-animate">About Me</span>
+                <h2 class="section-title type-animate">About Me</h2>
             </div>
             <div class="right-col animate-up">
                 <div class="card">
-                    <p class="type-animate">Hello! I'm a passionate Senior Software Engineer with over 3 years of experience in
-                        developing robust software , AI applications and microservices. I specialize in the Python
-                        ecosystem, Cloud Infrastructure and AI/ML works. However, this does not limit me and I'm open to working on
-                        any technology.</p>
-                    <p class="type-animate">My approach to development revolves around writing clean, maintainable code
-                        and architecting scalable systems that provide real business value.</p>
+                    <p class="type-animate">I'm a Senior Software Engineer at Gainsight, working at the intersection
+                        of LLM-powered product features and high-throughput backend infrastructure. Day-to-day that's
+                        Python — FastAPI services, LangGraph agents, RAG pipelines — running on AWS and GCP.</p>
+                    <p class="type-animate">I care about code that's easy to debug at 2 AM, observability that catches
+                        problems before customers do, and AI features that ground their answers in real data instead
+                        of hallucinating. Outside work: chess, gym, and music.</p>
                     <div class="skills-container">
                         <span class="skill-tag type-animate">Python</span>
-                        <span class="skill-tag type-animate">TypeScript</span>
-                        <span class="skill-tag type-animate">SQL</span>
                         <span class="skill-tag type-animate">FastAPI</span>
-                        <span class="skill-tag type-animate">React</span>
                         <span class="skill-tag type-animate">LangGraph</span>
                         <span class="skill-tag type-animate">Pytorch</span>
+                        <span class="skill-tag type-animate">PostgreSQL</span>
+                        <span class="skill-tag type-animate">NoSQL</span>
                         <span class="skill-tag type-animate">AWS</span>
                         <span class="skill-tag type-animate">GCP</span>
                         <span class="skill-tag type-animate">Docker</span>
-                        <span class="skill-tag type-animate">PostgreSQL</span>
-                        <span class="skill-tag type-animate">NoSQL</span>
                         <span class="skill-tag type-animate">ETL, Data Modeling</span>
                         <span class="skill-tag type-animate">Microservices</span>
                         <span class="skill-tag type-animate">Distributed Systems</span>
@@ -1575,14 +1787,131 @@
                         <line x1="9" y1="21" x2="9" y2="9"></line>
                     </svg>
                 </div>
-                <span class="section-title type-animate">Projects</span>
+                <h2 class="section-title type-animate">Projects</h2>
             </div>
             <div class="right-col">
-                <div id="projects-grid-featured"></div>
-                <div id="projects-secondary-header" class="more-projects-header animate-up" style="display: none;">
+                <div id="projects-grid-featured">
+                    <!-- AWS RL Environment (featured) -->
+                    <div class="card animate-up project-card project-card-featured" data-project-id="proj-aws-rl-env">
+                        <span class="featured-pill type-animate">Featured</span>
+                        <div class="project-link">
+                            <span class="type-animate">AWS RL Environment</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                        <p class="project-tagline"><span class="type-animate">Production-grade RL training pipeline for cloud agents — 120+ AWS tasks, 8-way parallel rollouts, full SFT→GRPO pipeline.</span></p>
+                        <div class="skills-container">
+                            <span class="skill-tag type-animate">Python</span>
+                            <span class="skill-tag type-animate">GRPO</span>
+                            <span class="skill-tag type-animate">Unsloth</span>
+                            <span class="skill-tag type-animate">TRL</span>
+                            <span class="skill-tag type-animate">FastAPI</span>
+                            <span class="skill-tag type-animate">OpenEnv</span>
+                            <span class="skill-tag type-animate">HuggingFace</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="card-action-chip primary" data-open-modal="proj-aws-rl-env" type="button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                                <span>View Details</span>
+                            </button>
+                            <a class="card-action-chip primary" href="https://sizzing-aws-rl-env.hf.space/web" target="_blank" rel="noopener noreferrer" data-link-chip="1">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                <span>Live Playground</span>
+                            </a>
+                            <a class="card-action-chip" href="https://github.com/UdayKiranPadhy/aws-rl-env" target="_blank" rel="noopener noreferrer" data-link-chip="1">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                <span>GitHub</span>
+                            </a>
+                            <a class="card-action-chip" href="https://huggingface.co/spaces/Sizzing/aws_rl_env" target="_blank" rel="noopener noreferrer" data-link-chip="1">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>
+                                <span>HF Space</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- LeetCode Companion (featured) -->
+                    <div class="card animate-up project-card project-card-featured" data-project-id="proj-leetcode-companion">
+                        <span class="featured-pill type-animate">Featured</span>
+                        <div class="project-link">
+                            <span class="type-animate">LeetCode Companion</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                        <p class="project-tagline"><span class="type-animate">AI-powered LeetCode tutor with streaming Gemini agents, formal complexity proofs, and multi-language annotated solutions.</span></p>
+                        <div class="skills-container">
+                            <span class="skill-tag type-animate">React</span>
+                            <span class="skill-tag type-animate">TypeScript</span>
+                            <span class="skill-tag type-animate">FastAPI</span>
+                            <span class="skill-tag type-animate">Gemini AI</span>
+                            <span class="skill-tag type-animate">SSE</span>
+                            <span class="skill-tag type-animate">crawl4ai</span>
+                            <span class="skill-tag type-animate">Docker</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="card-action-chip primary" data-open-modal="proj-leetcode-companion" type="button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                                <span>View Details</span>
+                            </button>
+                            <a class="card-action-chip primary" href="https://leetcode.udaykp.dev" target="_blank" rel="noopener noreferrer" data-link-chip="1">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                <span>Live Demo</span>
+                            </a>
+                            <a class="card-action-chip" href="https://github.com/UdayKiranPadhy/LeetcodeCompanion" target="_blank" rel="noopener noreferrer" data-link-chip="1">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="projects-secondary-header" class="more-projects-header animate-up">
                     <span class="modal-label type-animate">More Projects</span>
                 </div>
-                <div id="projects-grid-secondary"></div>
+
+                <div id="projects-grid-secondary">
+                    <!-- Leetcode Solutions Repository (secondary) -->
+                    <div class="card animate-up project-card project-card-secondary" data-project-id="proj-leetcode-solutions">
+                        <div class="project-link">
+                            <span class="type-animate">Leetcode Solutions Repository</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                        <p class="project-tagline"><span class="type-animate">Curated archive of algorithmic problem solutions with clear, didactic explanations.</span></p>
+                        <div class="skills-container">
+                            <span class="skill-tag type-animate">Python</span>
+                            <span class="skill-tag type-animate">Algorithms</span>
+                            <span class="skill-tag type-animate">Data Structures</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="card-action-chip primary" data-open-modal="proj-leetcode-solutions" type="button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                                <span>View Details</span>
+                            </button>
+                            <a class="card-action-chip" href="https://github.com/UdayKiranPadhy/Leetcode" target="_blank" rel="noopener noreferrer" data-link-chip="1">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Computer Access for Physically Challenged Users (secondary) -->
+                    <div class="card animate-up project-card project-card-secondary" data-project-id="proj-eye-tracking">
+                        <div class="project-link">
+                            <span class="type-animate">Computer Access for Physically Challenged Users</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                        <p class="project-tagline"><span class="type-animate">Hands-free computing via eye-tracking and voice control — software-only, no specialized hardware.</span></p>
+                        <div class="skills-container">
+                            <span class="skill-tag type-animate">Python</span>
+                            <span class="skill-tag type-animate">OpenCV</span>
+                            <span class="skill-tag type-animate">Computer Vision</span>
+                            <span class="skill-tag type-animate">NLP</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="card-action-chip primary" data-open-modal="proj-eye-tracking" type="button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                                <span>View Details</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1596,7 +1925,7 @@
                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                     </svg>
                 </div>
-                <span class="section-title type-animate">Experience</span>
+                <h2 class="section-title type-animate">Experience</h2>
             </div>
 
             <div class="right-col timeline">
@@ -1606,7 +1935,7 @@
                         <h3 class="role-title type-animate">Senior Software Engineer</h3>
                         <span class="date-badge type-animate">Aug 2025 - Present</span>
                     </div>
-                    <a href="https://www.gainsight.com" target="_blank">
+                    <a href="https://www.gainsight.com" target="_blank" rel="noopener noreferrer">
                         <div class="company-name type-animate">Gainsight</div>
                     </a>
                     <ul class="bullet-list">
@@ -1632,7 +1961,7 @@
                         <h3 class="role-title type-animate">Software Engineer</h3>
                         <span class="date-badge type-animate">Aug 2023 - Aug 2025</span>
                     </div>
-                    <a href="https://www.gainsight.com" target="_blank">
+                    <a href="https://www.gainsight.com" target="_blank" rel="noopener noreferrer">
                         <div class="company-name type-animate">Gainsight</div>
                     </a>
                     <ul class="bullet-list">
@@ -1668,7 +1997,7 @@
                         <h3 class="role-title type-animate">Associate Software Engineer</h3>
                         <span class="date-badge type-animate">Aug 2022 - Aug 2023</span>
                     </div>
-                    <a href="https://www.gainsight.com" target="_blank">
+                    <a href="https://www.gainsight.com" target="_blank" rel="noopener noreferrer">
                         <div class="company-name type-animate">Gainsight</div>
                     </a>
                     <ul class="bullet-list">
@@ -1700,7 +2029,7 @@
                         <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
                     </svg>
                 </div>
-                <span class="section-title type-animate">Education</span>
+                <h2 class="section-title type-animate">Education</h2>
             </div>
 
             <div class="right-col timeline">
@@ -1736,7 +2065,7 @@
                         </polygon>
                     </svg>
                 </div>
-                <span class="section-title type-animate">Achievements</span>
+                <h2 class="section-title type-animate">Achievements</h2>
             </div>
 
             <div class="right-col animate-up">
@@ -1776,7 +2105,7 @@
                         </path>
                     </svg>
                 </div>
-                <span class="section-title type-animate">Contact</span>
+                <h2 class="section-title type-animate">Contact</h2>
             </div>
             <div class="right-col animate-up">
                 <div class="contact-cta-card">
@@ -1810,7 +2139,21 @@
             <p id="modal-tagline" class="modal-tagline" style="display: none;"></p>
             <div id="modal-links" class="modal-links-row" style="display: none;"></div>
             <div id="modal-tags" class="modal-tags-row skills-container" style="display: none;"></div>
-            <div id="modal-hero-diagram" class="diag-hero-container" style="display: none;"></div>
+            <div id="modal-hero-carousel" class="diag-hero-container carousel-container" style="display: none;">
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="carousel-track"></div>
+                </div>
+                <button type="button" class="carousel-nav carousel-prev" id="carousel-prev" aria-label="Previous slide">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button type="button" class="carousel-nav carousel-next" id="carousel-next" aria-label="Next slide">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <span class="carousel-label" id="carousel-label">Architecture Diagram</span>
+                <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Slide navigation"></div>
+            </div>
 
             <div class="modal-grid">
                 <div class="modal-left">
@@ -1845,23 +2188,36 @@
         </div>
     </div>
 
+    <!-- Lightbox overlay for click-to-enlarge carousel slides -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Image preview">
+        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close preview">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="lightbox-content" id="lightbox-content"></div>
+        <span class="lightbox-caption" id="lightbox-caption"></span>
+    </div>
+
     <footer>
         <div class="container">
             <!-- Footer Social Links -->
             <div class="social-links" style="margin-top: 0; margin-bottom: 1.5rem;">
-                <a href="https://github.com/UdayKiranPadhy" target="_blank" aria-label="GitHub">
+                <a href="https://github.com/UdayKiranPadhy" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <svg viewBox="0 0 24 24">
                         <path
                             d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                     </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/udaykiranpadhy/" target="_blank" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/udaykiranpadhy/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <svg viewBox="0 0 24 24">
                         <path
                             d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                     </svg>
                 </a>
-                <a href="https://leetcode.com/u/IamUday/" target="_blank" aria-label="LeetCode">
+                <a href="https://leetcode.com/u/IamUday/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
                     <svg viewBox="0 0 24 24">
                         <path
                             d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.536-.536.554-1.387.039-1.901l-2.609-2.636a5.055 5.055 0 0 0-3.765-1.553c-1.313 0-2.606.514-3.541 1.464l-4.332 4.38a5.055 5.055 0 0 0-1.464 3.541c0 1.313.514 2.606 1.464 3.541l4.332 4.363c.935.95 2.228 1.464 3.541 1.464s2.606-.514 3.541-1.464l2.697-2.607c.514-.514.496-1.365-.039-1.9-.535-.535-1.386-.553-1.9-.038zm3.193-4.885h-10.1c-.722 0-1.312.59-1.312 1.312s.59 1.312 1.312 1.312h10.1c.722 0 1.312-.59 1.312-1.312s-.59-1.312-1.312-1.312z" />
@@ -1874,23 +2230,41 @@
 
     <script>
         // Global copy function
-        function copyEmail() {
+        async function copyEmail() {
             const email = "kiranu941@gmail.com";
-            const dummy = document.createElement("textarea");
-            document.body.appendChild(dummy);
-            dummy.value = email;
-            dummy.select();
-            document.execCommand("copy");
-            document.body.removeChild(dummy);
-
             const btn = document.getElementById('copy-btn');
             const originalText = btn.textContent;
-            btn.textContent = "Copied!";
-            btn.style.color = "var(--blue-accent)";
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.color = "";
-            }, 2000);
+
+            async function flashFeedback(message, color) {
+                btn.textContent = message;
+                btn.style.color = color;
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.color = "";
+                }, 2000);
+            }
+
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(email);
+                } else {
+                    // Fallback for non-secure contexts (e.g. file://) — use a hidden textarea
+                    const dummy = document.createElement("textarea");
+                    dummy.value = email;
+                    dummy.setAttribute("readonly", "");
+                    dummy.style.position = "absolute";
+                    dummy.style.left = "-9999px";
+                    document.body.appendChild(dummy);
+                    dummy.select();
+                    const ok = document.execCommand("copy");
+                    document.body.removeChild(dummy);
+                    if (!ok) throw new Error("Copy command failed");
+                }
+                flashFeedback("Copied!", "var(--blue-accent)");
+            } catch (err) {
+                flashFeedback("Copy failed — " + email, "var(--diag-red-stroke)");
+                console.error("copyEmail failed:", err);
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -2463,51 +2837,7 @@
                 }
             };
 
-            // ========== Projects: data-driven rendering ==========
-            const projectsData = [
-                {
-                    id: 'proj-aws-rl-env',
-                    title: 'AWS RL Environment',
-                    tagline: 'Production-grade RL training pipeline for cloud agents — 120+ AWS tasks, 8-way parallel rollouts, full SFT→GRPO pipeline.',
-                    tags: ['Python', 'GRPO', 'Unsloth', 'TRL', 'FastAPI', 'OpenEnv', 'HuggingFace'],
-                    featured: true,
-                    links: [
-                        { label: 'Live Playground', url: 'https://sizzing-aws-rl-env.hf.space/web', kind: 'primary' },
-                        { label: 'GitHub', url: 'https://github.com/UdayKiranPadhy/aws-rl-env', kind: 'secondary' },
-                        { label: 'HF Space', url: 'https://huggingface.co/spaces/Sizzing/aws_rl_env', kind: 'secondary' },
-                    ],
-                },
-                {
-                    id: 'proj-leetcode-companion',
-                    title: 'LeetCode Companion',
-                    tagline: 'AI-powered LeetCode tutor with streaming Gemini agents, formal complexity proofs, and multi-language annotated solutions.',
-                    tags: ['React', 'TypeScript', 'FastAPI', 'Gemini AI', 'SSE', 'crawl4ai', 'Docker'],
-                    featured: true,
-                    links: [
-                        { label: 'Live Demo', url: 'https://leetcode.udaykp.dev', kind: 'primary' },
-                        { label: 'GitHub', url: 'https://github.com/UdayKiranPadhy/LeetcodeCompanion', kind: 'secondary' },
-                    ],
-                },
-                {
-                    id: 'proj-leetcode-solutions',
-                    title: 'Leetcode Solutions Repository',
-                    tagline: 'Curated archive of algorithmic problem solutions with clear, didactic explanations.',
-                    tags: ['Python', 'Algorithms', 'Data Structures'],
-                    featured: false,
-                    links: [
-                        { label: 'GitHub', url: 'https://github.com/UdayKiranPadhy/Leetcode', kind: 'secondary' },
-                    ],
-                },
-                {
-                    id: 'proj-eye-tracking',
-                    title: 'Computer Access for Physically Challenged Users',
-                    tagline: 'Hands-free computing via eye-tracking and voice control — software-only, no specialized hardware.',
-                    tags: ['Python', 'OpenCV', 'Computer Vision', 'NLP'],
-                    featured: false,
-                    links: [],
-                },
-            ];
-
+            // Project cards are pre-rendered as static HTML above; modal link icons still live here
             const linkChipIcons = {
                 github: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`,
                 external: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
@@ -2523,75 +2853,25 @@
                 return linkChipIcons.external;
             }
 
-            const infoIconSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`;
-            const chevronIconSvg = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>`;
-
-            function buildProjectCard(p, isFeatured) {
-                const card = document.createElement('div');
-                card.className = `card animate-up project-card ${isFeatured ? 'project-card-featured' : 'project-card-secondary'}`;
-                card.setAttribute('data-project-id', p.id);
-                card.setAttribute('role', 'button');
-                card.setAttribute('tabindex', '0');
-                card.setAttribute('aria-label', `${p.title} — view details`);
-
-                const featuredPill = isFeatured ? `<span class="featured-pill type-animate">Featured</span>` : '';
-
-                const titleHTML = `
-                    <div class="project-link" aria-hidden="true">
-                        <span class="type-animate">${p.title}</span>
-                        ${chevronIconSvg}
-                    </div>`;
-
-                const taglineHTML = `<p class="project-tagline"><span class="type-animate">${p.tagline}</span></p>`;
-
-                const tagsHTML = `<div class="skills-container">${p.tags.map(t => `<span class="skill-tag type-animate">${t}</span>`).join('')}</div>`;
-
-                const linkChips = p.links.map(l => `
-                    <a class="card-action-chip ${l.kind === 'primary' ? 'primary' : ''}" href="${l.url}" target="_blank" rel="noopener noreferrer" data-link-chip="1">
-                        ${pickLinkIcon(l.label)}
-                        <span>${l.label}</span>
-                    </a>
-                `).join('');
-
-                const chipsHTML = `
-                    <div class="card-actions">
-                        <button class="card-action-chip primary" data-open-modal="${p.id}" type="button">
-                            ${infoIconSvg}
-                            <span>View Details</span>
-                        </button>
-                        ${linkChips}
-                    </div>`;
-
-                card.innerHTML = featuredPill + titleHTML + taglineHTML + tagsHTML + chipsHTML;
-
-                card.addEventListener('click', (e) => {
-                    if (e.target.closest('[data-link-chip]')) return;
-                    openModal(p.id);
-                });
-                card.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        if (e.target.closest('[data-link-chip]')) return;
-                        e.preventDefault();
-                        openModal(p.id);
-                    }
-                });
-
-                return card;
-            }
-
+            // Project cards are pre-rendered as static HTML so crawlers and no-JS users see content.
+            // This function only attaches click handlers to existing DOM nodes.
             function renderProjects() {
-                const featuredHost = document.getElementById('projects-grid-featured');
-                const secondaryHost = document.getElementById('projects-grid-secondary');
-                const secondaryHeader = document.getElementById('projects-secondary-header');
-                if (!featuredHost || !secondaryHost) return;
+                document.querySelectorAll('.project-card').forEach(card => {
+                    const id = card.getAttribute('data-project-id');
+                    if (!id) return;
+                    card.addEventListener('click', (e) => {
+                        // Skip if the click was on a link chip or the explicit View Details button
+                        if (e.target.closest('[data-link-chip]') || e.target.closest('[data-open-modal]')) return;
+                        openModal(id);
+                    });
+                });
 
-                const featured = projectsData.filter(p => p.featured);
-                const secondary = projectsData.filter(p => !p.featured);
-
-                featured.forEach(p => featuredHost.appendChild(buildProjectCard(p, true)));
-                secondary.forEach(p => secondaryHost.appendChild(buildProjectCard(p, false)));
-
-                if (secondary.length) secondaryHeader.style.display = 'block';
+                document.querySelectorAll('[data-open-modal]').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        openModal(btn.getAttribute('data-open-modal'));
+                    });
+                });
             }
 
             // ========== Extend projectDetails with full project entries ==========
@@ -2778,6 +3058,46 @@
                 },
             });
 
+            // 1) Set placeholder screenshots as a fallback so the carousel always has something to show.
+            //    Per-entry `screenshots: [...]` (hard-coded in projectDetails) takes precedence.
+            (function injectPlaceholderScreenshots() {
+                const palette = ['1a73e8', '34a853', 'f9ab00', 'd93025', '8e7cc3'];
+                Object.entries(projectDetails).forEach(([id, data], i) => {
+                    if (Array.isArray(data.screenshots) && data.screenshots.length) return;
+                    const color = palette[i % palette.length];
+                    const title = (data.title || id).slice(0, 40);
+                    const enc = (s) => encodeURIComponent(s);
+                    data.screenshots = [
+                        { src: `https://placehold.co/1280x720/${color}/ffffff?text=${enc(title + ' — UI overview')}`, label: `${title} — UI overview` },
+                        { src: `https://placehold.co/1280x720/${color}/ffffff?text=${enc(title + ' — detail view')}`, label: `${title} — detail view` },
+                    ];
+                });
+            })();
+
+            // 2) Load real screenshots from assets/images/manifest.json — overrides placeholders for any
+            //    entry listed in the manifest. Files live at assets/images/{project|experience}/<id>/<src>.
+            //    Fetch is async; the modal will show placeholders briefly until the manifest resolves.
+            (async function loadScreenshotManifest() {
+                try {
+                    const res = await fetch('assets/images/manifest.json', { cache: 'no-cache' });
+                    if (!res.ok) return;
+                    const manifest = await res.json();
+                    Object.entries(manifest).forEach(([id, list]) => {
+                        if (id.startsWith('_')) return; // skip schema / docs keys
+                        if (!projectDetails[id] || !Array.isArray(list) || !list.length) return;
+                        const folder = id.startsWith('proj-') ? 'project' : 'experience';
+                        projectDetails[id].screenshots = list
+                            .filter(item => item && item.src)
+                            .map(item => ({
+                                src: `assets/images/${folder}/${id}/${item.src}`,
+                                label: item.label || item.src,
+                            }));
+                    });
+                } catch (err) {
+                    console.warn('Screenshot manifest unavailable; using placeholders.', err);
+                }
+            })();
+
             renderProjects();
 
             // 1. Intersection Observer for standard Fade-up Animations (Cards, Icons)
@@ -2917,6 +3237,143 @@
             const modal = document.getElementById('details-modal');
             const closeModalBtn = document.getElementById('close-modal-btn');
 
+            // ===== Carousel inside the modal =====
+            const carouselContainer = document.getElementById('modal-hero-carousel');
+            const carouselTrack = document.getElementById('carousel-track');
+            const carouselPrev = document.getElementById('carousel-prev');
+            const carouselNext = document.getElementById('carousel-next');
+            const carouselDotsEl = document.getElementById('carousel-dots');
+            const carouselLabelEl = document.getElementById('carousel-label');
+
+            const carouselState = { slides: [], index: 0 };
+
+            function renderCarousel(slides) {
+                carouselState.slides = slides || [];
+                carouselState.index = 0;
+
+                if (!carouselState.slides.length) {
+                    carouselContainer.style.display = 'none';
+                    carouselTrack.innerHTML = '';
+                    return;
+                }
+
+                carouselContainer.style.display = 'flex';
+
+                carouselTrack.classList.add('no-transition');
+                carouselTrack.innerHTML = carouselState.slides.map((s, i) => {
+                    if (s.kind === 'image') {
+                        const altAttr = (s.label || 'Screenshot').replace(/"/g, '&quot;');
+                        return `<div class="carousel-slide" data-slide-index="${i}" data-kind="image">
+                            <img src="${s.src}" alt="${altAttr}" loading="lazy" />
+                        </div>`;
+                    }
+                    return `<div class="carousel-slide" data-slide-index="${i}" data-kind="diagram">${s.svg || ''}</div>`;
+                }).join('');
+
+                carouselDotsEl.innerHTML = carouselState.slides.map((_, i) =>
+                    `<button type="button" class="carousel-dot${i === 0 ? ' active' : ''}" data-dot-index="${i}" role="tab" aria-label="Slide ${i + 1}"></button>`
+                ).join('');
+
+                const single = carouselState.slides.length <= 1;
+                carouselPrev.classList.toggle('hidden', single);
+                carouselNext.classList.toggle('hidden', single);
+                carouselDotsEl.classList.toggle('hidden', single);
+
+                // Reset transform without animating from the previous modal's position
+                carouselTrack.style.transform = 'translateX(0)';
+                requestAnimationFrame(() => carouselTrack.classList.remove('no-transition'));
+
+                updateCarouselLabel();
+            }
+
+            function goToSlide(index) {
+                const { slides } = carouselState;
+                if (!slides.length) return;
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                carouselState.index = index;
+                carouselTrack.style.transform = `translateX(-${index * 100}%)`;
+                document.querySelectorAll('#carousel-dots .carousel-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+                updateCarouselLabel();
+            }
+
+            function updateCarouselLabel() {
+                const current = carouselState.slides[carouselState.index];
+                carouselLabelEl.textContent = (current && current.label) || 'Architecture Diagram';
+            }
+
+            carouselPrev.addEventListener('click', () => goToSlide(carouselState.index - 1));
+            carouselNext.addEventListener('click', () => goToSlide(carouselState.index + 1));
+            carouselDotsEl.addEventListener('click', (e) => {
+                const dot = e.target.closest('[data-dot-index]');
+                if (dot) goToSlide(parseInt(dot.getAttribute('data-dot-index'), 10));
+            });
+
+            // Open lightbox on slide click
+            carouselTrack.addEventListener('click', (e) => {
+                const slide = e.target.closest('.carousel-slide');
+                if (!slide) return;
+                openLightbox(carouselState.slides[carouselState.index]);
+            });
+
+            // Touch swipe
+            let touchStartX = null;
+            carouselTrack.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+            carouselTrack.addEventListener('touchend', (e) => {
+                if (touchStartX == null) return;
+                const dx = e.changedTouches[0].clientX - touchStartX;
+                touchStartX = null;
+                if (Math.abs(dx) < 40) return;
+                goToSlide(carouselState.index + (dx < 0 ? 1 : -1));
+            }, { passive: true });
+
+            // ===== Lightbox =====
+            const lightboxEl = document.getElementById('lightbox');
+            const lightboxContent = document.getElementById('lightbox-content');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const lightboxCloseBtn = document.getElementById('lightbox-close');
+
+            function openLightbox(slide) {
+                if (!slide) return;
+                if (slide.kind === 'image') {
+                    const altAttr = (slide.label || 'Screenshot').replace(/"/g, '&quot;');
+                    lightboxContent.innerHTML = `<img src="${slide.src}" alt="${altAttr}" />`;
+                } else {
+                    lightboxContent.innerHTML = slide.svg || '';
+                }
+                lightboxCaption.textContent = slide.label || '';
+                lightboxEl.classList.add('open');
+                lightboxEl.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeLightbox() {
+                lightboxEl.classList.remove('open');
+                lightboxEl.setAttribute('aria-hidden', 'true');
+                lightboxContent.innerHTML = '';
+                lightboxCaption.textContent = '';
+            }
+
+            lightboxCloseBtn.addEventListener('click', closeLightbox);
+            lightboxEl.addEventListener('click', (e) => {
+                // Click outside the inner content closes
+                if (!e.target.closest('.lightbox-content') && !e.target.closest('.lightbox-close')) {
+                    closeLightbox();
+                }
+            });
+
+            // Keyboard nav for both carousel and lightbox (when modal is open)
+            document.addEventListener('keydown', (e) => {
+                if (lightboxEl.classList.contains('open')) {
+                    if (e.key === 'Escape') closeLightbox();
+                    return;
+                }
+                if (!modal.classList.contains('open')) return;
+                if (e.key === 'ArrowLeft') { e.preventDefault(); goToSlide(carouselState.index - 1); }
+                else if (e.key === 'ArrowRight') { e.preventDefault(); goToSlide(carouselState.index + 1); }
+            });
+
             function openModal(id, opts = {}) {
                 const data = projectDetails[id];
                 if (!data) return;
@@ -2981,26 +3438,21 @@
                     tagsEl.style.display = 'none';
                 }
 
-                // Diagram: hero (full-width) vs narrow (right column legacy)
-                const heroEl = document.getElementById('modal-hero-diagram');
+                // Build carousel slides: architecture diagram first, then screenshots
                 const narrowWrap = document.getElementById('modal-narrow-diagram-wrap');
-                const narrowDiag = document.getElementById('modal-diagram');
-                if (data.heroDiagram) {
-                    heroEl.innerHTML = data.heroDiagram;
-                    heroEl.style.display = 'flex';
-                    narrowWrap.style.display = 'none';
-                    narrowDiag.innerHTML = '';
-                } else if (data.diagram) {
-                    heroEl.innerHTML = '';
-                    heroEl.style.display = 'none';
-                    narrowWrap.style.display = 'block';
-                    narrowDiag.innerHTML = data.diagram;
-                } else {
-                    heroEl.innerHTML = '';
-                    heroEl.style.display = 'none';
-                    narrowWrap.style.display = 'none';
-                    narrowDiag.innerHTML = '';
+                if (narrowWrap) narrowWrap.style.display = 'none';
+
+                const slides = [];
+                const diagramSvg = data.heroDiagram || data.diagram;
+                if (diagramSvg) {
+                    slides.push({ kind: 'diagram', svg: diagramSvg, label: 'Architecture Diagram' });
                 }
+                if (Array.isArray(data.screenshots)) {
+                    data.screenshots.forEach(s => {
+                        if (s && s.src) slides.push({ kind: 'image', src: s.src, label: s.label || 'Screenshot' });
+                    });
+                }
+                renderCarousel(slides);
 
                 // Performance / highlight cards
                 const perfContainer = document.getElementById('modal-perf');
