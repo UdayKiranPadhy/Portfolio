@@ -3,42 +3,87 @@
     "description": "Maps a projectDetails entry ID to its carousel screenshots. The src is resolved relative to assets/images/{project|experience}/<id>/<src>. Drop the image file there, list it here. Any common image format works: png, jpg, jpeg, webp, gif, svg. Entries omitted from this manifest fall back to the placeholder.",
     "example": {
       "proj-aws-rl-env": [
-        { "src": "live-playground.png", "label": "Live Playground UI" }
+        {
+          "src": "live-playground.png",
+          "label": "Live Playground UI"
+        }
       ]
     }
   },
-
   "proj-aws-rl-env": [
-    { "src": "live-playground.svg",  "label": "Live Playground UI" },
-    { "src": "training-curve.svg",   "label": "Training Loss Curve" },
-    { "src": "eval-dashboard.svg",   "label": "Eval Dashboard" }
+    {
+      "src": "eval-dashboard.svg",
+      "label": "Eval Dashboard"
+    },
+    {
+      "src": "live-playground.svg",
+      "label": "Live Playground UI"
+    },
+    {
+      "src": "training-curve.svg",
+      "label": "Training Loss Curve"
+    }
   ],
-
-  "proj-leetcode-companion": [
-    { "src": "chat-interface.svg",     "label": "Chat Interface" },
-    { "src": "complexity-proof.svg",   "label": "Complexity Proof Pane" },
-    { "src": "streaming-response.svg", "label": "Streaming Response" }
-  ],
-
-  "proj-leetcode-solutions": [
-    { "src": "repo-overview.svg",    "label": "Repository Overview" },
-    { "src": "solution-example.svg", "label": "Solution Walkthrough" }
-  ],
-
   "proj-eye-tracking": [
-    { "src": "tracking-demo.svg", "label": "Cursor Tracking Demo" },
-    { "src": "calibration.svg",   "label": "Calibration Screen" }
+    {
+      "src": "calibration.svg",
+      "label": "Calibration Screen"
+    },
+    {
+      "src": "tracking-demo.svg",
+      "label": "Cursor Tracking Demo"
+    }
   ],
-
+  "proj-leetcode-companion": [
+    {
+      "src": "chat-interface.svg",
+      "label": "Chat Interface"
+    },
+    {
+      "src": "complexity-proof.svg",
+      "label": "Complexity Proof Pane"
+    },
+    {
+      "src": "streaming-response.svg",
+      "label": "Streaming Response"
+    }
+  ],
+  "proj-leetcode-solutions": [
+    {
+      "src": "repo-overview.svg",
+      "label": "Repository Overview"
+    },
+    {
+      "src": "solution-example.svg",
+      "label": "Solution Walkthrough"
+    }
+  ],
   "exp0-2": [
-    { "src": "retrieval-flow.svg", "label": "Retrieval Flow Diagram" },
-    { "src": "query-results.svg",  "label": "Grounded Query Results" },
-    { "src": "metrics-board.svg",  "label": "Hallucination Metrics Board" }
+    {
+      "src": "metrics-board.svg",
+      "label": "Hallucination Metrics Board"
+    },
+    {
+      "src": "query-results.svg",
+      "label": "Grounded Query Results"
+    },
+    {
+      "src": "retrieval-flow.svg",
+      "label": "Retrieval Flow Diagram"
+    }
   ],
-
   "exp1-1": [
-    { "src": "graph-viz.svg",    "label": "LangGraph Topology" },
-    { "src": "run-timeline.svg", "label": "Agent Run Timeline" },
-    { "src": "tool-calls.svg",   "label": "Tool Call Trace" }
+    {
+      "src": "graph-viz.svg",
+      "label": "LangGraph Topology"
+    },
+    {
+      "src": "run-timeline.svg",
+      "label": "Agent Run Timeline"
+    },
+    {
+      "src": "tool-calls.svg",
+      "label": "Tool Call Trace"
+    }
   ]
 }
