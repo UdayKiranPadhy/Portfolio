@@ -12,40 +12,70 @@
   },
   "proj-aws-rl-env": [
     {
-      "src": "eval-dashboard.svg",
-      "label": "Eval Dashboard"
+      "src": "01-system-architecture.png",
+      "label": "System Architecture \u2014 Docker, FastAPI server, MiniStack pool"
     },
     {
-      "src": "live-playground.svg",
-      "label": "Live Playground UI"
+      "src": "02-curriculum-tier-pyramid.png",
+      "label": "Curriculum \u2014 124 tasks across 5 difficulty tiers + Drift track"
     },
     {
-      "src": "training-curve.svg",
-      "label": "Training Loss Curve"
-    }
-  ],
-  "proj-eye-tracking": [
-    {
-      "src": "calibration.svg",
-      "label": "Calibration Screen"
+      "src": "03-parallel-rollout-architecture.png",
+      "label": "Parallel Rollout \u2014 8 concurrent task pools (~8\u00d7 wall-clock speedup)"
     },
     {
-      "src": "tracking-demo.svg",
-      "label": "Cursor Tracking Demo"
+      "src": "04-reward-shaping.png",
+      "label": "Reward Shaping \u2014 achievement, dense shaping, penalties & hint decay"
+    },
+    {
+      "src": "05-live-environment-init.png",
+      "label": "Live Environment \u2014 8 parallel WebSocket clients on init"
+    },
+    {
+      "src": "06-sft-eval-results.png",
+      "label": "SFT Eval \u2014 Exact accuracy lifted from 38.9% to 88.9%"
+    },
+    {
+      "src": "07-sft-training-curves.png",
+      "label": "SFT Training Curves \u2014 loss, eval loss, LR schedule, gradient norm"
+    },
+    {
+      "src": "08-grpo-training-run.png",
+      "label": "GRPO Training Run \u2014 reward mean, KL divergence, completion length"
+    },
+    {
+      "src": "09-per-tier-performance.png",
+      "label": "Per-Tier Success \u2014 SFT vs SFT+GRPO across difficulty tiers"
+    },
+    {
+      "src": "10-hyperparameter-importance.png",
+      "label": "Hyperparameter Importance \u2014 learning rate dominates (Optuna)"
     }
   ],
   "proj-leetcode-companion": [
     {
-      "src": "chat-interface.svg",
-      "label": "Chat Interface"
+      "src": "01-landing-page.png",
+      "label": "Landing \u2014 paste a LeetCode URL to get started"
     },
     {
-      "src": "complexity-proof.svg",
-      "label": "Complexity Proof Pane"
+      "src": "02-problem-and-approach.png",
+      "label": "Problem View \u2014 Analyze My Approach + Generate Solution"
     },
     {
-      "src": "streaming-response.svg",
-      "label": "Streaming Response"
+      "src": "03-approach-feedback.png",
+      "label": "Approach Feedback \u2014 what you got right + where to reconsider"
+    },
+    {
+      "src": "04-progressive-hints.png",
+      "label": "Progressive Hints \u2014 Gentle \u2192 Nudge \u2192 Near Solution"
+    },
+    {
+      "src": "05-solution-with-sse-streaming.png",
+      "label": "Code Solution + multi-agent SSE streams visible in DevTools"
+    },
+    {
+      "src": "06-complexity-and-math-proofs.png",
+      "label": "Complexity & Math Proofs \u2014 time/space + proof by exhaustion"
     }
   ],
   "proj-leetcode-solutions": [
@@ -58,32 +88,86 @@
       "label": "Solution Walkthrough"
     }
   ],
-  "exp0-2": [
+  "exp0-1": [
     {
-      "src": "metrics-board.svg",
-      "label": "Hallucination Metrics Board"
+      "src": "01-customer-traffic-dashboard.png",
+      "label": "Customer Traffic Dashboard"
     },
     {
-      "src": "query-results.svg",
-      "label": "Grounded Query Results"
+      "src": "02-community-traffic-breakdown.png",
+      "label": "Community Traffic Breakdown"
     },
     {
-      "src": "retrieval-flow.svg",
-      "label": "Retrieval Flow Diagram"
+      "src": "03-weekly-traffic-trends.png",
+      "label": "Weekly Traffic Trends per Customer"
+    },
+    {
+      "src": "04-ptc-and-adobe-traffic.png",
+      "label": "PTC & Adobe Traffic"
+    },
+    {
+      "src": "05-request-log-drilldown.png",
+      "label": "Request Log Drilldown"
+    }
+  ],
+  "exp0-4": [
+    {
+      "src": "01-public-api-developer-docs.png",
+      "label": "Public API Developer Docs \u2014 endpoints, auth & response samples"
+    },
+    {
+      "src": "02-api-gateway-resources.png",
+      "label": "AWS API Gateway \u2014 public resources routed to Lambda"
+    }
+  ],
+  "exp0-5": [
+    {
+      "src": "01-user-overview-dashboard.png",
+      "label": "User Overview \u2014 multi-filter admin dashboard with role, activity & engagement columns"
     }
   ],
   "exp1-1": [
     {
-      "src": "graph-viz.svg",
-      "label": "LangGraph Topology"
+      "src": "01-ai-settings-and-agents.png",
+      "label": "AI Settings \u2014 Moderation, Search & Translation agents + grounding context"
+    }
+  ],
+  "exp1-2": [
+    {
+      "src": "01-sso-methods-panel.png",
+      "label": "End Users SSO \u2014 SAML, OAuth2, OpenID, Google Sign-In configured"
+    }
+  ],
+  "exp1-5": [
+    {
+      "src": "01-cloudwatch-alarms-list.png",
+      "label": "CloudWatch Alarms (43 alarms across user-management)"
     },
     {
-      "src": "run-timeline.svg",
-      "label": "Agent Run Timeline"
+      "src": "02-cpu-utilization-alarm-detail.png",
+      "label": "CPU Utilization Alarm \u2014 threshold + 3h window"
+    }
+  ],
+  "exp1-6": [
+    {
+      "src": "01-user-segments-panel.png",
+      "label": "User Segments \u2014 rule-based cohort builder"
+    }
+  ],
+  "exp2-2": [
+    {
+      "src": "01-languages-admin-panel.png",
+      "label": "Languages Admin Panel \u2014 enable & publish per locale"
+    }
+  ],
+  "exp2-4": [
+    {
+      "src": "01-stack-deployment-events.png",
+      "label": "CloudFormation Stack Deployment Events"
     },
     {
-      "src": "tool-calls.svg",
-      "label": "Tool Call Trace"
+      "src": "02-stack-resources-overview.png",
+      "label": "Stack Resources Overview (83 resources)"
     }
   ]
 }

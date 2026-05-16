@@ -25,7 +25,7 @@
     <title>Uday Kiran Portfolio</title>
     <meta name="title" content="Uday Kiran | Senior Software Engineer">
     <meta name="description"
-        content="Portfolio of Uday Kiran, a Senior Software Engineer specializing in scalable web applications, microservices, and cloud infrastructure.">
+        content="Portfolio of Uday Kiran, a Senior Software Engineer specializing in scalable web / AI applications, microservices, and cloud infrastructure.">
     <meta name="author" content="Uday Kiran Padhy">
 
     <!-- Open Graph / Facebook -->
@@ -33,7 +33,7 @@
     <meta property="og:url" content="https://udaykp.dev/">
     <meta property="og:title" content="Uday Kiran | Senior Software Engineer">
     <meta property="og:description"
-        content="Building scalable, robust web applications and solving complex system architecture problems.">
+        content="Building scalable, robust web / AI applications and solving complex system architecture problems.">
     <meta property="og:image"
         content="https://placehold.co/1200x630/1a73e8/ffffff.png?text=Uday+Kiran%0ASenior+Software+Engineer&amp;font=open-sans">
 
@@ -42,9 +42,125 @@
     <meta property="twitter:url" content="https://udaykp.dev/">
     <meta property="twitter:title" content="Uday Kiran | Senior Software Engineer">
     <meta property="twitter:description"
-        content="Building scalable, robust web applications and solving complex system architecture problems.">
+        content="Building scalable, robust web / AI applications and solving complex system architecture problems.">
     <meta name="twitter:image"
         content="https://placehold.co/1200x630/1a73e8/ffffff.png?text=Uday+Kiran%0ASenior+Software+Engineer&amp;font=open-sans">
+
+    <!-- Structured data for search engines + LLM agents. Mirrors the visible content in a
+         machine-readable format so a crawler that doesn't execute JS still gets the full picture. -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://udaykp.dev/#person",
+                "name": "Uday Kiran Padhy",
+                "jobTitle": "Senior Software Engineer",
+                "description": "Senior Software Engineer at Gainsight working at the intersection of LLM-powered product features and high-throughput backend infrastructure. Day-to-day: Python, FastAPI services, LangGraph multi-agent orchestration (Moderation, Search, Translation agents), RAG over customer data, running on AWS and GCP. Side projects include RL fine-tuning of small code models (Qwen2.5-Coder, SFT → GRPO; 38.9% to 88.9% exact-match on AWS-task curriculum) and an AI-powered LeetCode tutor with streaming Gemini backends.",
+                "url": "https://udaykp.dev/",
+                "email": "mailto:kiranu941@gmail.com",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Gainsight",
+                    "url": "https://www.gainsight.com"
+                },
+                "alumniOf": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Sagi Rama Krishnam Raju Engineering College"
+                },
+                "sameAs": [
+                    "https://github.com/UdayKiranPadhy",
+                    "https://www.linkedin.com/in/udaykiranpadhy/"
+                ],
+                "knowsAbout": [
+                    "Python", "TypeScript", "FastAPI", "React",
+                    "LangGraph", "Retrieval-Augmented Generation (RAG)", "Gemini AI", "PyTorch",
+                    "GRPO / SFT fine-tuning", "Multi-agent orchestration",
+                    "AWS", "GCP", "Docker", "CloudFormation (IaC)", "AWS API Gateway", "AWS Lambda", "CloudWatch",
+                    "PostgreSQL", "NoSQL", "ETL", "Data Modeling", "Vector Retrieval",
+                    "Microservices", "Distributed Systems", "Event-Driven Architecture",
+                    "Server-Sent Events (SSE)",
+                    "SSO (SAML, OAuth2, OpenID Connect)",
+                    "Snyk / CVE remediation", "Observability", "Internationalization (i18n)",
+                    "Data Structures and Algorithms"
+                ],
+                "hasOccupation": [
+                    {
+                        "@type": "Occupation",
+                        "name": "Senior Software Engineer",
+                        "occupationLocation": { "@type": "Organization", "name": "Gainsight" },
+                        "estimatedSalary": null,
+                        "description": "Aug 2025 – Present. Led delivery of enterprise-grade features that helped land strategic customers including Intuit and Adobe. Built LLM-powered product capabilities backed by RAG pipelines grounding model responses in customer data. Remediated critical Python CVE security vulnerabilities flagged by Snyk. Promoted internal APIs to public-facing endpoints under proper authentication and authorization."
+                    },
+                    {
+                        "@type": "Occupation",
+                        "name": "Software Engineer",
+                        "occupationLocation": { "@type": "Organization", "name": "Gainsight" },
+                        "description": "Aug 2023 – Aug 2025. Architected multi-step AI agents (Moderation, Search, Translation) using LangGraph. Implemented SSO across a multi-product platform (SAML 2, OAuth2, OpenID Connect, Google Sign-In). Designed high-throughput APIs. Built monitoring and observability for microservices and AI workloads using 43+ CloudWatch alarms. Engineered the user segmentation engine."
+                    },
+                    {
+                        "@type": "Occupation",
+                        "name": "Associate Software Engineer",
+                        "occupationLocation": { "@type": "Organization", "name": "Gainsight" },
+                        "description": "Aug 2022 – Aug 2023. Standardised Python local development with Docker. Built i18n primitives the platform uses across multiple locales. Wrote comprehensive automated testing suite (unit, integration, E2E). Automated infrastructure provisioning for 83+ microservice resources via CloudFormation IaC, achieving 30% reduction in deployment time."
+                    }
+                ]
+            },
+            {
+                "@type": "ItemList",
+                "name": "Projects by Uday Kiran Padhy",
+                "itemListOrder": "https://schema.org/ItemListOrderAscending",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "SoftwareApplication",
+                            "name": "AWS RL Environment",
+                            "description": "Production-grade RL training pipeline for cloud agents — 120+ AWS tasks across 5 difficulty tiers, 8-way parallel rollouts, full SFT→GRPO pipeline on Qwen2.5-Coder-3B. Exact-match accuracy lifted from 38.9% to 88.9% after SFT; GRPO added +6 pp on the intermediate tier.",
+                            "url": "https://sizzing-aws-rl-env.hf.space/web",
+                            "codeRepository": "https://github.com/UdayKiranPadhy/aws-rl-env",
+                            "applicationCategory": "DeveloperApplication",
+                            "operatingSystem": "Linux",
+                            "programmingLanguage": ["Python"],
+                            "keywords": ["RL", "GRPO", "SFT", "Unsloth", "TRL", "FastAPI", "OpenEnv", "HuggingFace", "Reinforcement Learning", "LLM fine-tuning"],
+                            "author": { "@id": "https://udaykp.dev/#person" }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@type": "SoftwareApplication",
+                            "name": "LeetCode Companion",
+                            "description": "AI-powered LeetCode tutor with streaming Gemini agents over Server-Sent Events. Multi-agent orchestration (thought process, math proof, code, complexity proof) with progressive hints (Gentle → Nudge → Near Solution), formal complexity proofs, and approach feedback grading.",
+                            "url": "https://leetcode.udaykp.dev",
+                            "codeRepository": "https://github.com/UdayKiranPadhy/LeetcodeCompanion",
+                            "applicationCategory": "EducationalApplication",
+                            "programmingLanguage": ["TypeScript", "Python"],
+                            "keywords": ["React", "TypeScript", "FastAPI", "Gemini AI", "Server-Sent Events", "SSE", "crawl4ai", "Docker", "Multi-agent"],
+                            "author": { "@id": "https://udaykp.dev/#person" }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": {
+                            "@type": "SoftwareSourceCode",
+                            "name": "Leetcode Solutions Repository",
+                            "description": "Curated multi-language LeetCode solutions repository for the wider engineering community.",
+                            "codeRepository": "https://github.com/UdayKiranPadhy/Leetcode",
+                            "programmingLanguage": ["Python", "Java", "C++"],
+                            "keywords": ["Leetcode", "Data Structures", "Algorithms"],
+                            "author": { "@id": "https://udaykp.dev/#person" }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
 
     <!-- Custom SVG Favicon (Terminal Icon) -->
     <link rel="icon"
@@ -72,6 +188,7 @@
             --modal-surface: #ffffff;
             --blue-accent: #1a73e8;
             --blue-hover: #1557b0;
+            --on-blue-accent: #ffffff;
             --code-bg: rgba(26, 115, 232, 0.06);
 
             /* Diagram palette (used by inline SVG architecture diagrams) */
@@ -106,6 +223,7 @@
             --modal-surface: #242424;
             --blue-accent: #8ab4f8;
             --blue-hover: #aecbfa;
+            --on-blue-accent: #0b1f3a;
             --code-bg: rgba(138, 180, 248, 0.12);
 
             --diag-blue-bg: #1c2733;
@@ -411,10 +529,10 @@
         /* Hero Primary Button */
         .btn-primary {
             background: var(--blue-accent);
-            color: white;
+            color: var(--on-blue-accent);
             padding: 0.75rem 2rem;
             border-radius: 50px;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 1.05rem;
             transition: all 0.2s ease;
             display: inline-flex;
@@ -426,6 +544,7 @@
 
         .btn-primary:hover {
             background: var(--blue-hover);
+            color: var(--on-blue-accent);
             box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
             transform: translateY(-1px);
         }
@@ -726,6 +845,28 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-top: 1.5rem;
+        }
+
+        /* Categorised skill pills in About — adds a small label above each group */
+        .skills-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .skills-category-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-category .skills-container {
+            margin-top: 0;
         }
 
         .skill-tag {
@@ -1087,13 +1228,14 @@
 
         .card-action-chip.primary {
             background: var(--blue-accent);
-            color: white;
+            color: var(--on-blue-accent);
             border-color: var(--blue-accent);
+            font-weight: 600;
         }
 
         .card-action-chip.primary:hover {
             background: var(--blue-hover);
-            color: white;
+            color: var(--on-blue-accent);
             border-color: var(--blue-hover);
             box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
             transform: translateY(-1px);
@@ -1135,12 +1277,14 @@
 
         .modal-link-btn.primary {
             background: var(--blue-accent);
-            color: white;
+            color: var(--on-blue-accent);
             border: 1px solid var(--blue-accent);
+            font-weight: 600;
         }
 
         .modal-link-btn.primary:hover {
             background: var(--blue-hover);
+            color: var(--on-blue-accent);
             border-color: var(--blue-hover);
             box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
             transform: translateY(-1px);
@@ -1348,7 +1492,7 @@
         }
 
         .lightbox-content {
-            max-width: 95vw;
+            width: min(95vw, 1400px);
             max-height: 85vh;
             display: flex;
             align-items: center;
@@ -1358,9 +1502,9 @@
 
         .lightbox-content img,
         .lightbox-content svg {
+            width: 100%;
             max-width: 100%;
             max-height: 85vh;
-            width: auto;
             height: auto;
             object-fit: contain;
             display: block;
@@ -1392,6 +1536,61 @@
 
         .lightbox-close:hover {
             background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Prev/next arrows inside the lightbox — same visual language as .lightbox-close */
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, opacity 0.2s ease;
+            z-index: 1;
+        }
+
+        .lightbox-nav svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .lightbox-prev {
+            left: 1.5rem;
+        }
+
+        .lightbox-next {
+            right: 1.5rem;
+        }
+
+        .lightbox-nav.hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .lightbox-nav {
+                width: 44px;
+                height: 44px;
+            }
+
+            .lightbox-prev {
+                left: 0.5rem;
+            }
+
+            .lightbox-next {
+                right: 0.5rem;
+            }
         }
 
         .lightbox-caption {
@@ -1686,7 +1885,7 @@
             <h2 id="hero-subtitle">Senior Software Engineer</h2>
             <p class="hero-fade-up"
                 style="max-width: 600px; margin-bottom: 2rem; margin-left: auto; margin-right: auto; font-size: 1.25rem;">
-                Building scalable, robust software applications and solving complex system architecture problems.
+                Building scalable, robust software / AI applications and solving complex system architecture problems.
             </p>
 
             <div class="hero-cta-container hero-fade-up">
@@ -1706,7 +1905,7 @@
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    Download Resume
+                    View Resume
                 </a>
             </div>
 
@@ -1751,26 +1950,68 @@
             <div class="right-col animate-up">
                 <div class="card">
                     <p class="type-animate">I'm a Senior Software Engineer at Gainsight, working at the intersection
-                        of LLM-powered product features and high-throughput backend infrastructure. Day-to-day that's
-                        Python — FastAPI services, LangGraph agents, RAG pipelines — running on AWS and GCP.</p>
+                        of LLM-powered product features and high-throughput backend infrastructure. Day to day that's
+                        Python — FastAPI services, AI multi-agent orchestration, running on AWS and GCP. 
+                    </p>
                     <p class="type-animate">I care about code that's easy to debug at 2 AM, observability that catches
                         problems before customers do, and AI features that ground their answers in real data instead
-                        of hallucinating. Outside work: chess, gym, and music.</p>
-                    <div class="skills-container">
-                        <span class="skill-tag type-animate">Python</span>
-                        <span class="skill-tag type-animate">FastAPI</span>
-                        <span class="skill-tag type-animate">LangGraph</span>
-                        <span class="skill-tag type-animate">Pytorch</span>
-                        <span class="skill-tag type-animate">PostgreSQL</span>
-                        <span class="skill-tag type-animate">NoSQL</span>
-                        <span class="skill-tag type-animate">AWS</span>
-                        <span class="skill-tag type-animate">GCP</span>
-                        <span class="skill-tag type-animate">Docker</span>
-                        <span class="skill-tag type-animate">ETL, Data Modeling</span>
-                        <span class="skill-tag type-animate">Microservices</span>
-                        <span class="skill-tag type-animate">Distributed Systems</span>
-                        <span class="skill-tag type-animate">Event-Driven Architecture</span>
-                        <span class="skill-tag type-animate">Data Structures And Algorithms</span>
+                        of hallucinating. Off-hours I build AI tooling, automating workflows, exploring new LLM capabilities and reading research papers.
+                        Sometimes play chess, hit the gym, go for a run, or jam to some music.</p>
+
+                    <div class="skills-categories">
+                        <div class="skills-category">
+                            <span class="skills-category-label type-animate">Languages &amp; Foundations</span>
+                            <div class="skills-container">
+                                <span class="skill-tag type-animate">Python</span>
+                                <span class="skill-tag type-animate">TypeScript</span>
+                                <span class="skill-tag type-animate">AI/ML modeling</span>
+                                <span class="skill-tag type-animate">System design</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <span class="skills-category-label type-animate">AI / ML</span>
+                            <div class="skills-container">
+                                <span class="skill-tag type-animate">LangGraph</span>
+                                <span class="skill-tag type-animate">Reinforcement Learning</span>
+                                <span class="skill-tag type-animate">PyTorch</span>
+                                <span class="skill-tag type-animate">Training and Tuning</span>
+                                <span class="skill-tag type-animate">HuggingFace</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <span class="skills-category-label type-animate">Backend &amp; APIs</span>
+                            <div class="skills-container">
+                                <span class="skill-tag type-animate">FastAPI</span>
+                                <span class="skill-tag type-animate">React</span>
+                                <span class="skill-tag type-animate">Microservices</span>
+                                <span class="skill-tag type-animate">Distributed Systems</span>
+                                <span class="skill-tag type-animate">Event-Driven Architecture</span>
+                                <span class="skill-tag type-animate">Authentication and Authorization</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <span class="skills-category-label type-animate">Cloud &amp; Infra</span>
+                            <div class="skills-container">
+                                <span class="skill-tag type-animate">AWS</span>
+                                <span class="skill-tag type-animate">GCP</span>
+                                <span class="skill-tag type-animate">Docker</span>
+                                <span class="skill-tag type-animate">Infrastructure as Code (IaC)</span>
+                                <span class="skill-tag type-animate">Observability and Monitoring</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <span class="skills-category-label type-animate">Data</span>
+                            <div class="skills-container">
+                                <span class="skill-tag type-animate">PostgreSQL</span>
+                                <span class="skill-tag type-animate">NoSQL</span>
+                                <span class="skill-tag type-animate">ETL &amp; Data Modeling</span>
+                                <span class="skill-tag type-animate">Vector Retrieval</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1795,15 +2036,14 @@
                     <div class="card animate-up project-card project-card-featured" data-project-id="proj-aws-rl-env">
                         <span class="featured-pill type-animate">Featured</span>
                         <div class="project-link">
-                            <span class="type-animate">AWS RL Environment</span>
+                            <span class="type-animate">AWS Reinforcement Learning Environment</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
                         </div>
-                        <p class="project-tagline"><span class="type-animate">Production-grade RL training pipeline for cloud agents — 120+ AWS tasks, 8-way parallel rollouts, full SFT→GRPO pipeline.</span></p>
+                        <p class="project-tagline"><span class="type-animate">Enterprise grade Reinforcement Learning training pipeline for cloud agents — 120+ AWS tasks, 8-way parallel rollouts, full SFT and GRPO pipeline.</span></p>
                         <div class="skills-container">
-                            <span class="skill-tag type-animate">Python</span>
                             <span class="skill-tag type-animate">GRPO</span>
+                            <span class="skill-tag type-animate">SFT</span>
                             <span class="skill-tag type-animate">Unsloth</span>
-                            <span class="skill-tag type-animate">TRL</span>
                             <span class="skill-tag type-animate">FastAPI</span>
                             <span class="skill-tag type-animate">OpenEnv</span>
                             <span class="skill-tag type-animate">HuggingFace</span>
@@ -1835,14 +2075,12 @@
                             <span class="type-animate">LeetCode Companion</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
                         </div>
-                        <p class="project-tagline"><span class="type-animate">AI-powered LeetCode tutor with streaming Gemini agents, formal complexity proofs, and multi-language annotated solutions.</span></p>
+                        <p class="project-tagline"><span class="type-animate">AI powered LeetCode tutor with streaming agents, formal complexity proofs, and multi language annotated solutions.</span></p>
                         <div class="skills-container">
                             <span class="skill-tag type-animate">React</span>
                             <span class="skill-tag type-animate">TypeScript</span>
                             <span class="skill-tag type-animate">FastAPI</span>
-                            <span class="skill-tag type-animate">Gemini AI</span>
-                            <span class="skill-tag type-animate">SSE</span>
-                            <span class="skill-tag type-animate">crawl4ai</span>
+                            <span class="skill-tag type-animate">Server Side Events</span>
                             <span class="skill-tag type-animate">Docker</span>
                         </div>
                         <div class="card-actions">
@@ -1892,26 +2130,6 @@
                         </div>
                     </div>
 
-                    <!-- Computer Access for Physically Challenged Users (secondary) -->
-                    <div class="card animate-up project-card project-card-secondary" data-project-id="proj-eye-tracking">
-                        <div class="project-link">
-                            <span class="type-animate">Computer Access for Physically Challenged Users</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                        </div>
-                        <p class="project-tagline"><span class="type-animate">Hands-free computing via eye-tracking and voice control — software-only, no specialized hardware.</span></p>
-                        <div class="skills-container">
-                            <span class="skill-tag type-animate">Python</span>
-                            <span class="skill-tag type-animate">OpenCV</span>
-                            <span class="skill-tag type-animate">Computer Vision</span>
-                            <span class="skill-tag type-animate">NLP</span>
-                        </div>
-                        <div class="card-actions">
-                            <button class="card-action-chip primary" data-open-modal="proj-eye-tracking" type="button">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                                <span>View Details</span>
-                            </button>
-                        </div>
-                    </div>
                     <!-- gen:projects-secondary-end -->
                 </div>
             </div>
@@ -1941,19 +2159,21 @@
                         <div class="company-name type-animate">Gainsight</div>
                     </a>
                     <ul class="bullet-list">
-                        <li data-detail-id="exp0-1"><span class="type-animate">Led delivery of enterprise-grade product
-                                features that helped land strategic customers including Intuit and Adobe, prioritizing
-                                scalability, security, and SLA-driven reliability for high-stakes deployments.</span>
+                        <li data-detail-id="exp0-1"><span class="type-animate">Shipped 5+ enterprise grade features that
+                                landed Fortune 500 accounts including Intuit and Adobe; sustained 99.95% measured
+                                uptime across high stakes deployments.</span>
                         </li>
-                        <li data-detail-id="exp0-2"><span class="type-animate">Built LLM-powered product capabilities
-                                backed by Retrieval-Augmented Generation (RAG) pipelines, grounding model responses in
-                                customer data to deliver accurate, context-aware AI experiences at scale.</span></li>
-                        <li data-detail-id="exp0-3"><span class="type-animate">Remediated critical Python CVE security
-                                vulnerabilities flagged by Snyk, hardening the platform's dependency footprint and
-                                keeping the Snyk dashboard green across automated scans.</span></li>
-                        <li data-detail-id="exp0-4"><span class="type-animate">Promoted internal APIs to public-facing
-                                endpoints under proper authentication and authorization, enabling customers to
-                                integrate the platform into their own systems and workflows.</span></li>
+                        <li data-detail-id="exp0-2"><span class="type-animate">Patched 2 critical Python CVEs flagged
+                                by Snyk; hardened the dependency footprint and held the dashboard at zero open
+                                critical findings.</span>
+                        </li>
+                        <li data-detail-id="exp0-3"><span class="type-animate">Promoted internal APIs to public facing
+                                endpoints under proper authorization, enabling customers to
+                                integrate the platform into their own systems and workflows.</span>
+                        </li>
+                        <li data-detail-id="exp0-4"><span class="type-animate">Built admin user dashboards over 5M+ data
+                                points with multiple criteria filtering, new writes propagate through an event driven
+                                pipeline so reads stay consistent within a fraction of few seconds.</span></li>
                         <!-- gen:exp0-end -->
                     </ul>
                 </div>
@@ -1968,28 +2188,28 @@
                         <div class="company-name type-animate">Gainsight</div>
                     </a>
                     <ul class="bullet-list">
-                        <li data-detail-id="exp1-1"><span class="type-animate">Architected and implemented multi-step AI
-                                Agents utilizing LangGraph for orchestration and complex reasoning to automate core
-                                business logic.</span></li>
-                        <li data-detail-id="exp1-2"><span class="type-animate">Enhanced user authentication and security
-                                by implementing Single Sign-On (SSO) across a multi-product platform, improving user
-                                experience and streamlining access management.</span></li>
-                        <li data-detail-id="exp1-3"><span class="type-animate">Designed and developed high-throughput
-                                APIs capable of handling millions of requests per second.</span></li>
-                        <li data-detail-id="exp1-4"><span class="type-animate">Implemented end-to-end microservices
-                                using FastAPI and React.js, resulting in a 5% increase in application scalability and a
-                                10% improvement in operational efficiency through optimized resource utilization.</span>
+                        <li data-detail-id="exp1-1"><span class="type-animate">Implemented 3 production 
+                                agents (Moderation, Search, Translation) with stateful multi step reasoning, tool use,
+                                and conditional graph routing; reached 95% decision accuracy and automated previously
+                                manual moderation and translation workflows.</span></li>
+                        <li data-detail-id="exp1-2"><span class="type-animate">Rolled out SSO across the multi product
+                                platform with 5 identity providers (SAML 2, OAuth2, OpenID, Token, Google Sign In);
+                                replaced per product credential with a unified sign in surface.</span></li>
+                        <li data-detail-id="exp1-3"><span class="type-animate">Designed high throughput APIs serving
+                                2M+ requests per day at ~500 RPS peak with P99 latency under 200ms; drove cost per request
+                                down 30% via caching, reiterating the architecture, and query plan tuning.</span></li>
+                        <li data-detail-id="exp1-4"><span class="type-animate">Extracted 2 team owned services out of
+                                the monolithic backend into independently deployable FastAPI microservices with
+                                dedicated scaling policies and CI pipelines, reducing deployment time from ~30 min
+                                to ~10 min and enabling per service hotfixes without a full system redeploy.</span>
                         </li>
-                        <li data-detail-id="exp1-5"><span class="type-animate">Developed comprehensive monitoring and
-                                observability solutions for microservices and AI workloads,
-                                ensuring 99% uptime and proactive anomaly detection.</span>
+                        <li data-detail-id="exp1-5"><span class="type-animate">Stood up observability for microservices
+                                and AI workloads, CloudWatch alarms sustained 99.9%
+                                measured uptime and caught regressions before customer impact.</span>
                         </li>
-                        <li data-detail-id="exp1-6"><span class="type-animate">Implemented scalable solution for
-                                handling large-scale user segmentation, improving targeted marketing
-                                efforts and user engagement.</span>
-                        </li>
-                        <li data-detail-id="exp1-7"><span class="type-animate">Moved legacy code to modern frameworks,
-                                improving maintainability and performance.</span>
+                        <li data-detail-id="exp1-6"><span class="type-animate">Built a rule based user segmentation
+                                engine with multi attribute predicates (registration recency, role, post counts,
+                                last activity windows); powers targeted audiences across the platform.</span>
                         </li>
                         <!-- gen:exp1-end -->
                     </ul>
@@ -2005,19 +2225,18 @@
                         <div class="company-name type-animate">Gainsight</div>
                     </a>
                     <ul class="bullet-list">
-                        <li data-detail-id="exp2-1"><span class="type-animate">Developed and configured Docker Python
-                                local environments, resolving deployment and development inconsistencies and reducing
-                                debugging time by 10%, improving developer productivity.</span></li>
-                        <li data-detail-id="exp2-2"><span class="type-animate">Played a pivotal role in the
-                                internationalization (i18n) of the company’s platform, ensuring seamlesslocalization and
-                                global accessibility for a diverse user base.</span></li>
-                        <li data-detail-id="exp2-3"><span class="type-animate">Implemented a comprehensive automated
-                                testing suite (unit, integration, and E2E) for critical application modules, increasing
-                                code quality confidence and accelerating feature velocity.</span></li>
-                        <li data-detail-id="exp2-4"><span class="type-animate">Automated infrastructure provisioning and
-                                configuration for multiple microservices using Infrastructure as
-                                Code (IaC), achieving a 30% reduction in deployment time and minimizing manual
-                                errors.</span></li>
+                        <li data-detail-id="exp2-1"><span class="type-animate">Standardized Python local dev with
+                                Docker Compose across the team's services; cut new engineer onboarding to first PR
+                                from ~3 days to under 1 day.</span></li>
+                        <li data-detail-id="exp2-2"><span class="type-animate">Built the platform's i18n framework
+                                supporting 20+ locales with message catalogs, plural rules, and RTL support;
+                                unblocked customer launches across EMEA and APAC.</span></li>
+                        <li data-detail-id="exp2-3"><span class="type-animate">Authored 200+ unit, integration, and E2E
+                                tests for critical modules; raised line coverage from ~40% to ~75% and caught
+                                regressions pre merge in CI.</span></li>
+                        <li data-detail-id="exp2-4"><span class="type-animate">Authored CloudFormation IaC for 2
+                                microservices (~83 AWS resources covering Lambda, RDS, IAM, Application Insights);
+                                provisioning with PR driven deploys.</span></li>
                         <!-- gen:exp2-end -->
                     </ul>
 
@@ -2203,6 +2422,14 @@
                 <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
         </button>
+        <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
         <div class="lightbox-content" id="lightbox-content"></div>
         <span class="lightbox-caption" id="lightbox-caption"></span>
     </div>
@@ -2230,7 +2457,6 @@
                     </svg>
                 </a>
             </div>
-            <p>&copy; 2026 Uday Developer. Built from scratch with HTML, CSS & JS.</p>
         </div>
     </footer>
 
@@ -2278,12 +2504,16 @@
             // Detailed content database
             const projectDetails = {
                 'exp0-1': {
-                    title: 'Enterprise-Grade Features for Strategic Accounts',
-                    problem: 'Onboarding large enterprise customers like Intuit and Adobe required deeper guarantees around scale, security, and reliability than the platform offered out of the box.',
-                    approach: 'Partnered with product and security stakeholders to identify enterprise gaps, then prioritized capabilities that aligned with high-value account requirements.',
-                    solution: 'Led design and delivery of enterprise-grade capabilities — hardened access controls, audit-grade observability, and SLA-aligned reliability patterns — that met the bar for Fortune 500 deployments.',
-                    impact: 'Unblocked the sales motion with strategic Fortune 500 accounts including Intuit and Adobe, expanding the platform\'s enterprise footprint.',
-                    perf: [{ v: 'Fortune 500', l: 'Customers Won' }, { v: 'Enterprise', l: 'SLA Grade' }],
+                    title: 'Enterprise Grade Features for Strategic Customers Onboarding',
+                    problem: 'Onboarding large enterprise customers like Intuit and Adobe required SLA guarantees, security, and reliability than the platform offered out of the box.',
+                    approach: 'Partnered across multiple teams and security stakeholders to identify enterprise gaps, ran JMeter tests and simulate high load scenarios, then prioritized the problems that aligned with high value customer requirements.',
+                    solution: 'Led design and delivery of enterprise grade capabilities hardened access controls, and SLA aligned reliability patterns that met the bar for Fortune 500 deployments.',
+                    impact: 'Unblocked the sales motion with strategic Fortune 500 accounts including Intuit and Adobe; sustained 99.95% measured uptime under high-stakes deployments while expanding the platform\'s enterprise footprint.',
+                    perf: [
+                        { v: '5+',       l: 'Enterprise Features Shipped' },
+                        { v: '99.95%',   l: 'Measured Uptime' },
+                        { v: 'Fortune 500', l: 'Customers Won' },
+                    ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="20" width="60" height="22" rx="3" fill="var(--diag-blue-bg)" stroke="var(--blue-accent)"/>
                         <text x="40" y="35" text-anchor="middle" font-size="9" fill="var(--blue-accent)" font-weight="bold">Intuit</text>
@@ -2321,51 +2551,16 @@
                     </svg>`
                 },
                 'exp0-2': {
-                    title: 'RAG-Powered LLM Product Features',
-                    problem: 'LLMs alone produced ungrounded, hallucination-prone answers, making them unsuitable for product surfaces that demand accuracy over customer-specific data.',
-                    approach: 'Adopted a Retrieval-Augmented Generation (RAG) pattern to ground LLM outputs in trusted, customer-owned data sources at query time.',
-                    solution: 'Built end-to-end RAG pipelines — embedding generation, vector retrieval, context assembly, and prompt orchestration — and wired them into customer-facing product features.',
-                    impact: 'Delivered contextual, source-grounded AI experiences in production, reducing hallucinations and earning customer trust in AI-driven features.',
-                    perf: [{ v: 'Grounded', l: 'AI Responses' }, { v: 'Production', l: 'Deployment' }],
-                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
-                        <rect x="5" y="50" width="50" height="25" rx="3" fill="var(--diag-blue-bg)" stroke="var(--blue-accent)"/>
-                        <text x="30" y="66" text-anchor="middle" font-size="8" fill="var(--blue-accent)" font-weight="bold">Query</text>
-
-                        <path d="M55,62 L85,62" stroke="var(--text-muted)" stroke-width="1" marker-end="url(#arr)"/>
-
-                        <rect x="90" y="25" width="70" height="28" rx="3" fill="var(--diag-yellow-bg)" stroke="var(--diag-yellow-stroke)"/>
-                        <text x="125" y="42" text-anchor="middle" font-size="8" font-weight="bold">Vector</text>
-                        <text x="125" y="51" text-anchor="middle" font-size="7">Retrieval</text>
-
-                        <rect x="90" y="73" width="70" height="28" rx="3" fill="var(--diag-red-bg)" stroke="var(--diag-red-stroke)"/>
-                        <text x="125" y="89" text-anchor="middle" font-size="8" font-weight="bold">Customer</text>
-                        <text x="125" y="98" text-anchor="middle" font-size="7">Data Store</text>
-
-                        <path d="M125,73 L125,55" stroke="var(--text-muted)" stroke-width="1" marker-end="url(#arr)"/>
-
-                        <path d="M160,42 L188,58" stroke="var(--text-muted)" stroke-width="1" marker-end="url(#arr)"/>
-                        <rect x="190" y="48" width="55" height="28" rx="3" fill="var(--surface-hover)" stroke="var(--text-strong)"/>
-                        <text x="217" y="66" text-anchor="middle" font-size="9" font-weight="bold">LLM</text>
-
-                        <path d="M245,62 L268,62" stroke="var(--text-muted)" stroke-width="1" marker-end="url(#arr)"/>
-
-                        <rect x="270" y="50" width="25" height="25" rx="3" fill="var(--diag-green-bg)" stroke="var(--diag-green-stroke)"/>
-                        <text x="282" y="66" text-anchor="middle" font-size="7" fill="var(--diag-green-stroke)">Ans</text>
-
-                        <defs>
-                            <marker id="arr" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                                <polygon points="0 0, 10 3.5, 0 7" fill="var(--text-muted)" />
-                            </marker>
-                        </defs>
-                    </svg>`
-                },
-                'exp0-3': {
-                    title: 'Python CVE Remediation & Snyk Hygiene',
-                    problem: 'Critical Python CVEs were being flagged by Snyk scans, putting compliance posture and customer trust at risk on enterprise deployments.',
+                    title: 'CVE Remediation & Snyk Hygiene',
+                    problem: 'Critical Python CVEs and license issues were flagged by Snyk scans posing a risk of getting hacked on the platform.',
                     approach: 'Triaged CVEs by severity and exploitability, then upgraded or replaced vulnerable dependencies while validating no functional regressions.',
-                    solution: 'Patched critical CVEs across the Python dependency tree, refactored code where direct upgrades were blocked, and tightened the dependency update pipeline so new findings get addressed before they accumulate.',
-                    impact: 'Cleared critical and high-severity findings, kept the Snyk dashboard green across automated scans, and protected enterprise deployments from known vulnerabilities.',
-                    perf: [{ v: 'Critical', l: 'CVEs Fixed' }, { v: 'Green', l: 'Snyk Dashboard' }],
+                    solution: 'Patched critical CVEs across the Python dependency tree, refactored code where direct upgrades could cause issues.',
+                    impact: 'Patched 2 critical Python CVEs, and held the Snyk dashboard at zero open issues.',
+                    perf: [
+                        { v: '2',    l: 'Critical CVEs Patched' },
+                        { v: 'Zero', l: 'Open Critical Findings' },
+                        { v: '1', l: 'License Issues Resolved' },
+                    ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="45" width="55" height="30" rx="3" fill="var(--diag-red-bg)" stroke="var(--diag-red-stroke)"/>
                         <text x="37" y="60" text-anchor="middle" font-size="8" fill="var(--diag-red-stroke)" font-weight="bold">Snyk</text>
@@ -2395,13 +2590,13 @@
                         </defs>
                     </svg>`
                 },
-                'exp0-4': {
+                'exp0-3': {
                     title: 'Public API for Customer Integrations',
                     problem: 'Internal APIs powered the product but were locked behind internal trust boundaries, blocking customers who wanted to integrate the platform into their own systems and workflows.',
-                    approach: 'Audited internal APIs for safety, designed authentication and authorization, scoped permissions, and rate-limited usage so the endpoints could be safely exposed to external consumers.',
-                    solution: 'Promoted internal APIs to a public surface under proper authentication and authorization, with scoped tokens, rate limiting, and versioning so customers could build integrations against a stable contract.',
-                    impact: 'Unlocked customer-built integrations and partner workflows on top of the platform, expanding its surface area as a programmable product rather than a closed app.',
-                    perf: [{ v: 'Public', l: 'API Surface' }, { v: 'AuthZ-Gated', l: 'Access' }],
+                    approach: 'Audited internal APIs for safety, designed authorization, so the endpoints could be safely exposed to external consumers.',
+                    solution: 'Promoted internal APIs to a public surface under proper authorization, with versioning so customers could build integrations against a stable contract.',
+                    impact: 'Unlocked customer built integrations and partner workflows on top of the platform, expanding its surface area as a programmable product rather than a closed app.',
+                    perf: [{ v: 'AuthZ-Gated', l: 'Access' }],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="20" width="55" height="22" rx="3" fill="var(--diag-blue-bg)" stroke="var(--blue-accent)"/>
                         <text x="37" y="35" text-anchor="middle" font-size="8" fill="var(--blue-accent)" font-weight="bold">Customer</text>
@@ -2434,12 +2629,16 @@
                     </svg>`
                 },
                 'exp1-1': {
-                    title: 'Agentic AI Orchestration with LangGraph',
-                    problem: 'Standard linear LLM chains were unable to handle non-linear business logic, requiring complex state management and iterative reasoning cycles.',
-                    approach: 'Adopted a graph-based orchestration pattern to model business logic as a series of nodes and conditional edges for sophisticated decision-making.',
-                    solution: 'Architected multi-step AI Agents using LangGraph, integrating stateful persistence and tool-calling capabilities to automate cyclic and complex reasoning tasks.',
-                    impact: 'Automated high-level decision-making processes, reducing manual intervention in core business logic and enabling more robust, error-correcting AI workflows.',
-                    perf: [{ v: '95%', l: 'Decision Accuracy' }, { v: 'Automated', l: 'Core Logic' }],
+                    title: 'Agentic AI Orchestration',
+                    problem: 'Standard linear LLM chains couldn\'t handle non-linear business logic that needed branching decisions, state across turns, and external tool calls (CRM lookups, translation services, content moderation checks).',
+                    approach: 'Adopted a graph-based orchestration pattern to model each workflow as a set of nodes and conditional edges — enabling stateful multi-step reasoning, tool-use, and error-correcting retries.',
+                    solution: 'Architected three agents — Moderation, Search, and Translation — each with stateful persistence, tool-calling integrations, and conditional graph routing. Each agent handles multi-step decision logic that linear chains couldn\'t model.',
+                    impact: 'Reached 95% decision accuracy across automated moderation and translation workflows, removing manual review overhead and unlocking GenAI-driven product surfaces (Moderation Agent, Search Agent, Translation Agent) in the customer-facing admin panel.',
+                    perf: [
+                        { v: '3',   l: 'Production GenAI Agents' },
+                        { v: '95%', l: 'Decision Accuracy' },
+                        { v: 'LangGraph', l: 'Orchestration Engine' },
+                    ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <circle cx="30" cy="60" r="20" fill="var(--diag-blue-bg)" stroke="var(--blue-accent)"/>
                         <text x="30" y="63" text-anchor="middle" font-size="8" fill="var(--blue-accent)" font-weight="bold">Start</text>
@@ -2470,9 +2669,12 @@
                     title: 'Unified SSO and Identity Access Management',
                     problem: 'Fragmented authentication across multiple products caused high friction for users and significant overhead for administrative access management.',
                     approach: 'Centralize identity management through a unified authentication layer to provide a seamless transitions between platform products.',
-                    solution: 'Implemented an OIDC/SAML-based Single Sign-On (SSO) solution, integrating disparate services into a central identity provider for secure and simplified login.',
-                    impact: 'Drastically improved user retention through seamless navigation and centralized security controls, reducing support tickets related to login issues.',
-                    perf: [{ v: '100%', l: 'Unified Access' }, { v: 'Seamless', l: 'UX Integration' }],
+                    solution: 'Rolled out SSO across the multi product platform with 5 identity providers; SAML 2, OAuth2, OpenID Connect, Token-based auth, and Google Sign-In wired into a central identity layer with per product session management.',
+                    impact: 'Replaced per product credential with a unified sign in surface, cut login friction across the platform and removed the auth related support ticket backlog.',
+                    perf: [
+                        { v: '5',          l: 'Identity Providers' },
+                        { v: 'Unified',    l: 'Cross-product Session' }
+                    ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="45" width="50" height="30" rx="3" fill="var(--diag-blue-bg)" stroke="var(--blue-accent)"/>
                         <text x="35" y="65" text-anchor="middle" font-size="8" fill="var(--blue-accent)" font-weight="bold">User</text>
@@ -2504,11 +2706,15 @@
                 },
                 'exp1-3': {
                     title: 'High-Throughput Scalable API Architecture',
-                    problem: 'Existing API infrastructure struggled with vertical scaling limits and high latency during peak traffic of millions of requests per second.',
-                    approach: 'Leveraged horizontal scaling and distributed caching strategies to decouple request processing from data persistence.',
-                    solution: 'Engineered a high-performance API layer using asynchronous processing and optimized load balancing to distribute traffic across elastic compute clusters.',
-                    impact: 'Successfully maintained sub-millisecond latency for critical endpoints while supporting extreme traffic spikes without system degradation.',
-                    perf: [{ v: '1M+', l: 'Req/Sec Capacity' }, { v: '<50ms', l: 'P99 Latency' }],
+                    problem: 'Growing peak load (millions of requests per day at thousands of RPS bursts) were increasing latency on critical endpoints and inflating per request compute cost.',
+                    approach: 'Decouple request handling from data persistence, horizontal scaling for compute, a read-through caching layer for hot keys, async I/O to overlap network and DB waits, and query-plan tuning for the slowest read paths.',
+                    solution: 'A horizontal scaled API layer with async I/O, a read-through cache for hot keys, connection pooling to the primary store, and rewritten query plans for the top-15 slowest endpoints.',
+                    impact: 'Sustained 2M+ requests/day at ~500 RPS peak, with P99 latency under 200ms on cached paths and under 500ms on cold paths, cost per request dropped ~30% after the caching and query-tuning passes, without sacrificing read consistency.',
+                    perf: [
+                        { v: '2M+',    l: 'Requests / Day' },
+                        { v: '<200ms', l: 'P99 Latency (cached)' },
+                        { v: '-30%',   l: 'Cost per Request' },
+                    ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="5" y="45" width="40" height="30" rx="3" fill="var(--diag-blue-bg)" stroke="var(--blue-accent)"/>
                         <text x="25" y="65" text-anchor="middle" font-size="7" fill="var(--blue-accent)">Global</text>
@@ -2545,12 +2751,16 @@
                     </svg>`
                 },
                 'exp1-4': {
-                    title: 'Full-Stack Microservices Ecosystem',
-                    problem: 'Legacy system architecture struggled with inefficient resource allocation and tight coupling, leading to operational bottlenecks during scaling.',
-                    approach: 'Decomposition of the application into independent services with a modern tech stack to facilitate granular scaling and rapid frontend iteration.',
-                    solution: 'Engineered a suite of high-performance microservices using FastAPI for the backend and React.js for the frontend, optimized with efficient Docker resource tagging and asynchronous I/O.',
-                    impact: 'Improved system throughput and operational oversight, allowing the infrastructure to handle increased load with lower compute overhead.',
-                    perf: [{ v: '5%', l: 'Scalability Increase' }, { v: '10%', l: 'Resource Efficiency' }],
+                    title: 'Domain Extraction from Monolith to Microservices',
+                    problem: 'Two team owned domains were tightly coupled to the legacy monolith — any change required a full system redeploy, scaling was uniform across the codebase regardless of per-domain load, and hotfixes couldn\'t ship without coordinating with every other team in the monolith.',
+                    approach: 'Use the strangler pattern: identify the bounded contexts, extract each domain\'s data, business logic, and API surface into its own FastAPI service with a dedicated deploy pipeline and scaling policy, and migrate traffic incrementally behind versioned HTTP contracts.',
+                    solution: 'Extracted 2 of the team\'s domains into independently deployable FastAPI microservices, each with its own deployment, scaling policy, and CI pipeline. The legacy monolith calls into them via versioned HTTP interfaces while ownership stays inside the team.',
+                    impact: 'The deploy time got reduced from ~30 min (monolithic full-system redeploy) to ~10 min (per-service pipeline). Enabled the team to ship hotfixes for either service without coordinating with the wider monolith. Each service now scales according to its own load profile rather than inheriting the monolith\'s footprint.',
+                    perf: [
+                        { v: '2',           l: 'Domains Extracted' },
+                        { v: '~3× faster',  l: 'Deploy Lead Time (30 → 10 min)' },
+                        { v: 'Independent', l: 'Per-service Scaling & Hotfix' },
+                    ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
         <rect x="10" y="40" width="60" height="40" rx="4" fill="var(--diag-blue-bg)" stroke="var(--blue-accent)"/>
         <text x="40" y="60" text-anchor="middle" font-size="8" font-weight="bold" fill="var(--blue-accent)">React.js</text>
@@ -2581,11 +2791,14 @@
                 },
                 'exp1-5': {
                     title: 'Monitoring and Observability Infrastructure',
-                    problem: 'Lack of visibility into distributed microservices and non-deterministic AI workloads, leading to reactive firefighting and extended downtime during failures.',
-                    approach: 'Implementation of a holistic observability stack focusing on the three pillars: metrics, logs, and distributed tracing.',
-                    solution: 'Developed a robust monitoring suite using CloudWatch and OpenTelemetry to track system health, coupled with automated alerting for proactive anomaly detection across AI inference pipelines.',
-                    impact: 'Achieved high system reliability with a significant reduction in Mean Time to Recovery (MTTR) through real-time dashboards and early warning systems.',
-                    perf: [{ v: '99.9%', l: 'System Uptime' }, { v: 'Proactive', l: 'Anomaly Detection' }],
+                    problem: 'Lack of visibility into distributed microservices, leading to extended downtime during failures.',
+                    approach: 'Implementation of an observability stack focusing on the three pillars: metrics, logs, and distributed tracing.',
+                    solution: 'Stood up the observability stack — 43+ CloudWatch alarms across Lambda, RDS, and Application Insights and OpenTelemetry-based traces — covering both microservice request paths.',
+                    impact: 'Sustained 99.9% measured uptime across the rolling 90-day window and caught regressions before customer impact.',
+                    perf: [
+                        { v: '43+',   l: 'CloudWatch Alarms' },
+                        { v: '99.9%', l: 'Measured Uptime' },
+                    ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="25" width="70" height="70" rx="5" fill="var(--surface-hover)" stroke="var(--text-strong)" stroke-dasharray="3"/>
                         <text x="45" y="40" text-anchor="middle" font-size="7" fill="var(--text-muted)">Workloads</text>
@@ -2620,12 +2833,16 @@
                     </svg>`
                 },
                 'exp1-6': {
-                    title: 'High-Scale User Segmentation Engine',
-                    problem: 'Inefficient processing of massive user datasets led to delayed marketing campaigns and generic, low-engagement user outreach.',
-                    approach: 'Designed a distributed data processing pipeline to categorize users into granular segments based on real-time behavioral and demographic data.',
-                    solution: 'Developed a scalable segmentation service utilizing optimized database queries and background workers to process millions of user profiles with minimal latency.',
-                    impact: 'Empowered the marketing team with precise targeting capabilities, resulting in significantly higher conversion rates and improved user retention.',
-                    perf: [{ v: 'Millions', l: 'Users Segmented' }, { v: '2x', l: 'Engagement Boost' }],
+                    title: 'Rule-Based User Segmentation Engine',
+                    problem: 'CS and marketing teams needed to slice the user base by recency, role, activity, and engagement signals to target workflows and campaigns.',
+                    approach: 'Implement rule-based engine: arbitrary boolean combinations of multi attribute filtering (registration recency, role, post / topic / reply counts, last activity windows), evaluated against a projection of the user table.',
+                    solution: 'Built a rule based segmentation service with composable predicates over user attributes. ',
+                    impact: 'CS admins can now author and ship new cohorts in minutes instead of needing engineering involvement; cohort-targeted CS workflows and campaigns run against fresh segment data without batch lag.',
+                    perf: [
+                        { v: 'Multi-attribute', l: 'Predicates' },
+                        { v: 'Self-serve',      l: 'Cohort Authoring' },
+                        { v: 'Projection-backed', l: 'Read Store' },
+                    ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="40" width="55" height="40" rx="4" fill="var(--surface-muted)" stroke="var(--text-muted)"/>
                         <text x="37" y="60" text-anchor="middle" font-size="8" fill="var(--text-strong)" font-weight="bold">User</text>
@@ -2656,55 +2873,15 @@
                         </defs>
                     </svg>`
                 },
-                'exp1-7': {
-                    title: 'Legacy System Modernization and Refactoring',
-                    problem: 'Technical debt from an aging codebase caused slow development cycles, difficult maintenance, and degraded application performance.',
-                    approach: 'Incremental migration of legacy modules to modern frameworks, focusing on modularity and adherence to clean code principles.',
-                    solution: 'Successfully ported legacy logic to a modern framework (Python/FastAPI), replacing monolithic patterns with scalable components and optimized data access layers.',
-                    impact: 'Significantly improved developer productivity by reducing the complexity of the codebase and decreasing API response times.',
-                    perf: [{ v: '40%', l: 'Codebase Reduction' }, { v: '25%', l: 'Perf Improvement' }],
-                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
-                        <rect x="10" y="30" width="80" height="70" rx="4" fill="var(--diag-red-bg)" stroke="var(--diag-red-stroke)"/>
-                        <text x="50" y="50" text-anchor="middle" font-size="8" fill="var(--diag-red-stroke)" font-weight="bold">Legacy</text>
-                        <text x="50" y="65" text-anchor="middle" font-size="7" fill="var(--diag-red-stroke)">Monolithic</text>
-                        <text x="50" y="75" text-anchor="middle" font-size="7" fill="var(--diag-red-stroke)">Codebase</text>
-
-                        <path d="M100,65 L135,65" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arr)"/>
-                        
-                        <rect x="145" y="30" width="140" height="70" rx="4" fill="var(--diag-green-bg)" stroke="var(--diag-green-stroke)"/>
-                        <text x="215" y="45" text-anchor="middle" font-size="9" fill="var(--diag-green-stroke)" font-weight="bold">Modern Framework</text>
-                        
-                        <rect x="155" y="55" width="35" height="30" rx="2" fill="var(--surface-color)" stroke="var(--diag-green-stroke)"/>
-                        <text x="172.5" y="75" text-anchor="middle" font-size="6">Module A</text>
-                        
-                        <rect x="197.5" y="55" width="35" height="30" rx="2" fill="var(--surface-color)" stroke="var(--diag-green-stroke)"/>
-                        <text x="215" y="75" text-anchor="middle" font-size="6">Module B</text>
-                        
-                        <rect x="240" y="55" width="35" height="30" rx="2" fill="var(--surface-color)" stroke="var(--diag-green-stroke)"/>
-                        <text x="257.5" y="75" text-anchor="middle" font-size="6">Module C</text>
-
-                        <defs>
-                            <marker id="arr" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                                <polygon points="0 0, 10 3.5, 0 7" fill="var(--text-muted)" />
-                            </marker>
-                        </defs>
-                    </svg>`
-                },
                 'exp2-1': {
                     title: "Dockerized Development Environment Standardization",
                     problem: "Inconsistencies between local development and production environments leading to 'it works on my machine' bugs and high debugging overhead.",
                     approach: "Containerization of the Python stack to create parity across the development lifecycle and automate environment parity.",
-                    solution: "Developed and configured a standardized Docker-based Python environment with optimized multi-stage builds and volume mapping for real-time code reloading.",
-                    impact: "Eliminated deployment-related environmental errors and significantly streamlined the onboarding and development workflow for the engineering team.",
+                    solution: "Developed and configured a standardized Docker-based Python environment with optimized multi stage builds and volume mapping for real time code reloading.",
+                    impact: "Eliminated 'works on my machine' bug class, and gave the team reproducible dev parity with production.",
                     perf: [
-                        {
-                            v: "10%",
-                            l: "Debugging Time Reduction"
-                        },
-                        {
-                            v: "100%",
-                            l: "Environment Parity"
-                        }
+                        { v: 'Parity',    l: 'Dev ↔ Prod Environments' },
+                        { v: 'Compose',   l: 'Single-Command Bring-up' },
                     ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="5" y="5" width="290" height="110" rx="8" fill="none" stroke="var(--border-color)" stroke-dasharray="4"/>
@@ -2737,11 +2914,14 @@
                 },
                 'exp2-2': {
                     title: 'Platform Internationalization (i18n) Engineering',
-                    problem: 'Hardcoded strings and region-specific logic preventing the platform from scaling to global markets and non-English speaking users.',
-                    approach: 'Decoupled UI components from static content using a centralized translation management system and locale-aware formatting logic.',
-                    solution: 'Engineered a robust i18n framework using industry-standard libraries to handle dynamic content translation, RTL (Right-to-Left) support, and localized date/currency formatting.',
-                    impact: 'Enabled seamless market entry into new regions, ensuring 100% UI localization and a consistent user experience for a global audience.',
-                    perf: [{ v: '100%', l: 'Global Accessibility' }, { v: 'Multi-Region', l: 'Deployment Ready' }],
+                    problem: 'Hardcoded strings and region specific logic preventing the platform from scaling to global markets and non English speaking users.',
+                    approach: 'Decoupled UI components from static content using a centralized translation management system and locale aware formatting logic.',
+                    solution: 'Engineered a robust i18n framework using industry standard libraries to handle dynamic content translation, RTL (Right-to-Left) support, and localized date/currency formatting.',
+                    impact: 'Built the i18n framework supporting 20+ locales (English variants, Chinese SC/TC, Croatian, Czech, Danish, Dutch, German, French, Spanish, …) with message catalogs, plural rules, and RTL support; unblocked customer launches across EMEA and APAC.',
+                    perf: [
+                        { v: '20+',       l: 'Locales Supported' },
+                        { v: 'EMEA / APAC', l: 'Markets Unblocked' },
+                    ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <rect x="10" y="40" width="60" height="40" rx="4" fill="var(--diag-blue-bg)" stroke="var(--blue-accent)"/>
                         <text x="40" y="60" text-anchor="middle" font-size="9" fill="var(--blue-accent)" font-weight="bold">UI Layer</text>
@@ -2770,12 +2950,16 @@
                     </svg>`
                 },
                 'exp2-3': {
-                    title: 'Automated Multi-Tier Testing Infrastructure',
+                    title: 'Automated Multi Tier Testing Infrastructure',
                     problem: 'Manual regression testing slowing down release cycles and high risk of production bugs in critical business modules.',
-                    approach: 'Shift-left testing strategy implementing a layered pyramid of Unit, Integration, and End-to-End (E2E) tests.',
-                    solution: 'Engineered a CI/CD-integrated test suite using Pytest for backend logic and Playwright for E2E user flows, ensuring 100% coverage on critical paths.',
-                    impact: 'Drastically reduced regression-related hotfixes and empowered the team to deploy new features with high confidence and speed.',
-                    perf: [{ v: '85%', l: 'Code Coverage' }, { v: '2x', l: 'Feature Velocity' }],
+                    approach: 'Shift left testing strategy implementing a layered pyramid of Unit, Integration, and End-to-End (E2E) tests.',
+                    solution: 'Authored 200+ tests across Pytest (unit + integration) and Playwright (E2E), wired into the CI/CD pipeline so every PR runs the suite before merge. Coverage focused on the business-critical modules: auth, segmentation, and the admin surfaces.',
+                    impact: 'Lifted line coverage on the critical modules from ~40% to ~75% and caught regressions pre-merge in CI, cutting the regression-related hotfix rate and shortening the path from PR to production.',
+                    perf: [
+                        { v: '200+',    l: 'Tests Added' },
+                        { v: '~40% → ~75%', l: 'Line Coverage (critical modules)' },
+                        { v: 'Pre-merge', l: 'Regression Catch in CI' },
+                    ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
                         <polygon points="150,10 230,100 70,100" fill="var(--surface-hover)" stroke="var(--text-strong)" stroke-width="1.5"/>
                         
@@ -2806,11 +2990,15 @@
                 },
                 'exp2-4': {
                     title: 'Automated Infrastructure as Code (IaC) Framework',
-                    problem: 'Manual infrastructure provisioning was error-prone, inconsistent across environments, and created bottlenecks in the deployment pipeline.',
+                    problem: 'Manual infrastructure provisioning was error prone, inconsistent across environments, and created bottlenecks in the deployment pipeline.',
                     approach: 'Standardize resource management by treating infrastructure as software through declarative configuration files and automated pipelines.',
-                    solution: 'Implemented CloudFormation and configuration management scripts to provision cloud resources and microservice environments, ensuring repeatable and version-controlled infrastructure.',
-                    impact: 'Eliminated manual configuration drift and significantly accelerated the path from code commit to production-ready infrastructure.',
-                    perf: [{ v: '30%', l: 'Deployment Time Reduction' }, { v: 'Zero', l: 'Manual Config Errors' }],
+                    solution: 'Authored CloudFormation modules for 2 of the team\'s microservices — ~83 AWS resources covering Lambda, RDS, IAM roles/policies, Application Insights, alarms, and networking wired into a PR driven pipeline that replaces manual Techops provisioning.',
+                    impact: 'Replaced Techops with version controlled IaC across the team\'s 2 microservices; eliminated configuration drift and shortened new environment bring up from a multi day manual checklist to a single PR merge.',
+                    perf: [
+                        { v: '2',    l: 'Services Under IaC' },
+                        { v: '83',   l: 'AWS Resources Managed' },
+                        { v: 'Zero', l: 'Manual Techops' },
+                    ],
                     heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
         <rect x="10" y="40" width="55" height="40" rx="4" fill="var(--diag-blue-bg)" stroke="var(--blue-accent)"/>
         <text x="37" y="60" text-anchor="middle" font-size="8" fill="var(--blue-accent)" font-weight="bold">IaC Code</text>
@@ -2840,6 +3028,48 @@
             </marker>
         </defs>
     </svg>`
+                },
+                'exp0-4': {
+                    title: 'Admin User Dashboards at 5M+ Data-Point Scale',
+                    problem: 'Customer success admins needed to slice and filter user activity across millions of users with quick filtering response times',
+                    approach: 'Decouple read side data from write side data with an event driven pattern — writes emit events to a stream, async consumers update read optimised database, and the dashboard issues filterable queries against pre aggregated views.',
+                    solution: 'Built the admin User Overview surface with multi attribute filters (username, email, role, custom roles, registration window, last-activity window, posts/topics/replies counts, rank), column customisation, and paginated reads against a projection store. New writes propagate through the event pipeline asynchronously so the read path stays responsive even when the underlying user base grows past 5M data points.',
+                    impact: 'Sub-second filtered queries across millions of users. ',
+                    perf: [
+                        { v: '5M+', l: 'Data Points' },
+                        { v: 'Sub-second', l: 'Filter Latency' },
+                        { v: 'Eventual', l: 'Consistency Model' },
+                    ],
+                    heroDiagram: `<svg viewBox="0 0 300 120" width="100%">
+                        <rect x="5" y="35" width="50" height="25" rx="3" fill="var(--diag-red-bg)" stroke="var(--diag-red-stroke)"/>
+                        <text x="30" y="51" text-anchor="middle" font-size="8" fill="var(--diag-red-stroke)" font-weight="bold">Writes</text>
+
+                        <path d="M55,47 L80,47" stroke="var(--text-muted)" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <rect x="85" y="35" width="70" height="25" rx="3" fill="var(--diag-yellow-bg)" stroke="var(--diag-yellow-stroke)"/>
+                        <text x="120" y="51" text-anchor="middle" font-size="8" font-weight="bold">Event Stream</text>
+
+                        <path d="M155,47 L180,47" stroke="var(--text-muted)" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <rect x="185" y="35" width="60" height="25" rx="3" fill="var(--diag-blue-bg)" stroke="var(--blue-accent)"/>
+                        <text x="215" y="51" text-anchor="middle" font-size="8" fill="var(--blue-accent)" font-weight="bold">Projections</text>
+
+                        <rect x="185" y="75" width="60" height="25" rx="3" fill="var(--diag-green-bg)" stroke="var(--diag-green-stroke)"/>
+                        <text x="215" y="91" text-anchor="middle" font-size="8" fill="var(--diag-green-stroke)" font-weight="bold">Read Store</text>
+
+                        <path d="M215,60 L215,75" stroke="var(--text-muted)" stroke-width="1" marker-end="url(#arr)"/>
+
+                        <path d="M185,87 L155,87" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+                        <rect x="60" y="75" width="95" height="25" rx="3" fill="var(--surface-hover)" stroke="var(--text-strong)"/>
+                        <text x="107" y="91" text-anchor="middle" font-size="8" font-weight="bold">Filterable Dashboard</text>
+
+                        <defs>
+                            <marker id="arr" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="var(--text-muted)" />
+                            </marker>
+                        </defs>
+                    </svg>`
                 },
                 // gen:exp-details-end
             };
@@ -3049,20 +3279,6 @@
                         { v: 'Python', l: 'Primary Language' },
                     ],
                 },
-                'proj-eye-tracking': {
-                    title: 'Computer Access for Physically Challenged Users',
-                    tagline: 'Hands-free computing via eye-tracking and voice control — software-only, no specialized hardware.',
-                    tags: ['Python', 'OpenCV', 'Computer Vision', 'NLP'],
-                    links: [],
-                    problem: 'Accessibility tools for users with motor impairments often require costly specialized hardware or extensive setup, putting hands-free computing out of reach for many.',
-                    approach: 'Build a software-only system using off-the-shelf webcams and microphones, combining computer vision (eye tracking) with NLP (voice commands) for cursor control and command execution.',
-                    solution: 'OpenCV-based eye-tracking system mapping gaze direction to cursor position, paired with real-time voice recognition for clicks, typing, and command execution.',
-                    impact: 'Demonstrated ~60% cursor-control accuracy in early prototypes, enabling hands-free computer use without specialized hardware — a software-only path to assistive computing.',
-                    perf: [
-                        { v: '60%', l: 'Tracking Accuracy' },
-                        { v: 'Webcam', l: 'No Special Hardware' },
-                    ],
-                },
                 // gen:proj-details-end
             });
 
@@ -3268,11 +3484,13 @@
                 carouselContainer.style.display = 'flex';
 
                 carouselTrack.classList.add('no-transition');
+                // Image slides start with data-src (not src) so the browser doesn't fetch them.
+                // hydrateSlide() promotes data-src → src on demand for the active slide + its neighbors.
                 carouselTrack.innerHTML = carouselState.slides.map((s, i) => {
                     if (s.kind === 'image') {
                         const altAttr = (s.label || 'Screenshot').replace(/"/g, '&quot;');
                         return `<div class="carousel-slide" data-slide-index="${i}" data-kind="image">
-                            <img src="${s.src}" alt="${altAttr}" loading="lazy" />
+                            <img data-src="${s.src}" alt="${altAttr}" />
                         </div>`;
                     }
                     return `<div class="carousel-slide" data-slide-index="${i}" data-kind="diagram">${s.svg || ''}</div>`;
@@ -3291,7 +3509,23 @@
                 carouselTrack.style.transform = 'translateX(0)';
                 requestAnimationFrame(() => carouselTrack.classList.remove('no-transition'));
 
+                // Hydrate the first slide right away; prefetch the next one in the background
+                hydrateSlide(0);
+                hydrateSlide(1);
+
                 updateCarouselLabel();
+            }
+
+            // Promote data-src → src for a single slide. Idempotent — safe to call repeatedly.
+            function hydrateSlide(index) {
+                const slides = carouselState.slides;
+                if (index < 0 || index >= slides.length) return;
+                const slideEl = carouselTrack.children[index];
+                if (!slideEl) return;
+                const img = slideEl.querySelector('img[data-src]');
+                if (!img) return; // either non-image slide or already hydrated
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
             }
 
             function goToSlide(index) {
@@ -3305,6 +3539,11 @@
                     d.classList.toggle('active', i === index);
                 });
                 updateCarouselLabel();
+
+                // Hydrate the slide the user just landed on, plus neighbors for snappy next/prev clicks
+                hydrateSlide(index);
+                hydrateSlide(index + 1);
+                hydrateSlide(index - 1);
             }
 
             function updateCarouselLabel() {
@@ -3323,7 +3562,7 @@
             carouselTrack.addEventListener('click', (e) => {
                 const slide = e.target.closest('.carousel-slide');
                 if (!slide) return;
-                openLightbox(carouselState.slides[carouselState.index]);
+                openLightbox(carouselState.index);
             });
 
             // Touch swipe
@@ -3342,8 +3581,13 @@
             const lightboxContent = document.getElementById('lightbox-content');
             const lightboxCaption = document.getElementById('lightbox-caption');
             const lightboxCloseBtn = document.getElementById('lightbox-close');
+            const lightboxPrevBtn = document.getElementById('lightbox-prev');
+            const lightboxNextBtn = document.getElementById('lightbox-next');
 
-            function openLightbox(slide) {
+            const lightboxState = { index: 0 };
+
+            function renderLightboxSlide() {
+                const slide = carouselState.slides[lightboxState.index];
                 if (!slide) return;
                 if (slide.kind === 'image') {
                     const altAttr = (slide.label || 'Screenshot').replace(/"/g, '&quot;');
@@ -3352,8 +3596,28 @@
                     lightboxContent.innerHTML = slide.svg || '';
                 }
                 lightboxCaption.textContent = slide.label || '';
+                // Keep the carousel in sync so closing the lightbox lands the user on the same slide
+                if (carouselState.slides.length > 1) goToSlide(lightboxState.index);
+            }
+
+            function openLightbox(index) {
+                if (!carouselState.slides.length) return;
+                if (typeof index !== 'number') index = carouselState.index;
+                const n = carouselState.slides.length;
+                lightboxState.index = ((index % n) + n) % n;
+                renderLightboxSlide();
+                const single = n <= 1;
+                lightboxPrevBtn.classList.toggle('hidden', single);
+                lightboxNextBtn.classList.toggle('hidden', single);
                 lightboxEl.classList.add('open');
                 lightboxEl.setAttribute('aria-hidden', 'false');
+            }
+
+            function lightboxGoTo(delta) {
+                const n = carouselState.slides.length;
+                if (n <= 1) return;
+                lightboxState.index = ((lightboxState.index + delta) % n + n) % n;
+                renderLightboxSlide();
             }
 
             function closeLightbox() {
@@ -3364,17 +3628,45 @@
             }
 
             lightboxCloseBtn.addEventListener('click', closeLightbox);
+            lightboxPrevBtn.addEventListener('click', (e) => { e.stopPropagation(); lightboxGoTo(-1); });
+            lightboxNextBtn.addEventListener('click', (e) => { e.stopPropagation(); lightboxGoTo(1); });
+
             lightboxEl.addEventListener('click', (e) => {
-                // Click outside the inner content closes
-                if (!e.target.closest('.lightbox-content') && !e.target.closest('.lightbox-close')) {
-                    closeLightbox();
-                }
+                // Click outside the inner content / close button / nav arrows closes the lightbox
+                if (e.target.closest('.lightbox-content')) return;
+                if (e.target.closest('.lightbox-close')) return;
+                if (e.target.closest('.lightbox-nav')) return;
+                closeLightbox();
             });
+
+            // Touch swipe inside the lightbox
+            let lbTouchStartX = null;
+            lightboxContent.addEventListener('touchstart', (e) => {
+                lbTouchStartX = e.touches[0].clientX;
+            }, { passive: true });
+            lightboxContent.addEventListener('touchend', (e) => {
+                if (lbTouchStartX == null) return;
+                const dx = e.changedTouches[0].clientX - lbTouchStartX;
+                lbTouchStartX = null;
+                if (Math.abs(dx) < 40) return;
+                lightboxGoTo(dx < 0 ? 1 : -1);
+            }, { passive: true });
 
             // Keyboard nav for both carousel and lightbox (when modal is open)
             document.addEventListener('keydown', (e) => {
                 if (lightboxEl.classList.contains('open')) {
-                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'Escape') {
+                        // Stop other listeners (modal Esc, hamburger Esc) from firing this tick.
+                        // Without this, the same Esc would close the modal underneath.
+                        e.stopImmediatePropagation();
+                        closeLightbox();
+                    } else if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        lightboxGoTo(-1);
+                    } else if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        lightboxGoTo(1);
+                    }
                     return;
                 }
                 if (!modal.classList.contains('open')) return;
@@ -3516,9 +3808,12 @@
                 if (!e.target.closest('.modal-container')) closeModal();
             });
 
-            // Esc key closes the modal
+            // Esc key closes the modal — but if the lightbox is on top, let its handler close
+            // the lightbox first; the modal stays open until a second Esc press.
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+                if (e.key !== 'Escape') return;
+                if (lightboxEl.classList.contains('open')) return;
+                if (modal.classList.contains('open')) closeModal();
             });
 
             // Browser back/forward: sync modal state with URL hash
