@@ -3413,19 +3413,19 @@
 
             // 1) Set placeholder screenshots as a fallback so the carousel always has something to show.
             //    Per-entry `screenshots: [...]` (hard-coded in projectDetails) takes precedence.
-            (function injectPlaceholderScreenshots() {
-                const palette = ['1a73e8', '34a853', 'f9ab00', 'd93025', '8e7cc3'];
-                Object.entries(projectDetails).forEach(([id, data], i) => {
-                    if (Array.isArray(data.screenshots) && data.screenshots.length) return;
-                    const color = palette[i % palette.length];
-                    const title = (data.title || id).slice(0, 40);
-                    const enc = (s) => encodeURIComponent(s);
-                    data.screenshots = [
-                        { src: `https://placehold.co/1280x720/${color}/ffffff?text=${enc(title + ' — UI overview')}`, label: `${title} — UI overview` },
-                        { src: `https://placehold.co/1280x720/${color}/ffffff?text=${enc(title + ' — detail view')}`, label: `${title} — detail view` },
-                    ];
-                });
-            })();
+            // (function injectPlaceholderScreenshots() {
+            //     const palette = ['1a73e8', '34a853', 'f9ab00', 'd93025', '8e7cc3'];
+            //     Object.entries(projectDetails).forEach(([id, data], i) => {
+            //         if (Array.isArray(data.screenshots) && data.screenshots.length) return;
+            //         const color = palette[i % palette.length];
+            //         const title = (data.title || id).slice(0, 40);
+            //         const enc = (s) => encodeURIComponent(s);
+            //         data.screenshots = [
+            //             { src: `https://placehold.co/1280x720/${color}/ffffff?text=${enc(title + ' — UI overview')}`, label: `${title} — UI overview` },
+            //             { src: `https://placehold.co/1280x720/${color}/ffffff?text=${enc(title + ' — detail view')}`, label: `${title} — detail view` },
+            //         ];
+            //     });
+            // })();
 
             // 2) Load real screenshots from assets/images/manifest.json — overrides placeholders for any
             //    entry listed in the manifest. Files live at assets/images/{project|experience}/<id>/<src>.
