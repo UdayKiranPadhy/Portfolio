@@ -117,6 +117,21 @@
                         "position": 1,
                         "item": {
                             "@type": "SoftwareApplication",
+                            "name": "Aakar — LLM Architecture Visualizer",
+                            "description": "Interactive, educational visualizer for LLM architectures. Paste any HuggingFace model id and explore its real PyTorch nn.Module tree as a zoomable diagram — root model → backbone → decoder block → inside attention (q/k/v/o projections, grouped-query head shapes, scores → softmax). Introspects any architecture (Llama, Qwen, Mistral, Gemma, Mixtral, MoE) on the meta device with zero weights downloaded; companion views add a token-shape journey, parameter/compute breakdowns, and side-by-side model comparison.",
+                            "url": "https://aakar.udaykp.dev/",
+                            "codeRepository": "https://github.com/UdayKiranPadhy/Aakar",
+                            "applicationCategory": "EducationalApplication",
+                            "programmingLanguage": ["TypeScript", "Python"],
+                            "keywords": ["React", "TypeScript", "React Flow", "FastAPI", "PyTorch", "transformers", "HuggingFace", "LLM", "Transformer architecture", "Mixture of Experts", "Attention", "Meta device introspection"],
+                            "author": { "@id": "https://udaykp.dev/#person" }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@type": "SoftwareApplication",
                             "name": "AWS RL Environment",
                             "description": "Production-grade RL training pipeline for cloud agents — 120+ AWS tasks across 5 difficulty tiers, 8-way parallel rollouts, full SFT→GRPO pipeline on Qwen2.5-Coder-3B. Exact-match accuracy lifted from 38.9% to 88.9% after SFT; GRPO added +6 pp on the intermediate tier.",
                             "url": "https://sizzing-aws-rl-env.hf.space/web",
@@ -130,7 +145,7 @@
                     },
                     {
                         "@type": "ListItem",
-                        "position": 2,
+                        "position": 3,
                         "item": {
                             "@type": "SoftwareApplication",
                             "name": "LeetCode Companion",
@@ -145,7 +160,7 @@
                     },
                     {
                         "@type": "ListItem",
-                        "position": 3,
+                        "position": 4,
                         "item": {
                             "@type": "SoftwareSourceCode",
                             "name": "Leetcode Solutions Repository",
@@ -2031,6 +2046,38 @@
             </div>
             <div class="right-col">
                 <div id="projects-grid-featured">
+                    <!-- Aakar — LLM Architecture Visualizer (featured) -->
+                    <div class="card animate-up project-card project-card-featured" data-project-id="proj-aakar">
+                        <span class="featured-pill type-animate">Featured</span>
+                        <div class="project-link">
+                            <span class="type-animate">Aakar — LLM Architecture Visualizer</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                        <p class="project-tagline"><span class="type-animate">Paste any HuggingFace model id and explore its real PyTorch module tree as an interactive, zoomable diagram — from the whole model down into a single attention head.</span></p>
+                        <div class="skills-container">
+                            <span class="skill-tag type-animate">React</span>
+                            <span class="skill-tag type-animate">TypeScript</span>
+                            <span class="skill-tag type-animate">React Flow</span>
+                            <span class="skill-tag type-animate">FastAPI</span>
+                            <span class="skill-tag type-animate">PyTorch</span>
+                            <span class="skill-tag type-animate">transformers</span>
+                        </div>
+                        <div class="card-actions">
+                            <button class="card-action-chip primary" data-open-modal="proj-aakar" type="button">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                                <span>View Details</span>
+                            </button>
+                            <a class="card-action-chip primary" href="https://aakar.udaykp.dev/" target="_blank" rel="noopener noreferrer" data-link-chip="1">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                <span>Live Demo</span>
+                            </a>
+                            <a class="card-action-chip" href="https://github.com/UdayKiranPadhy/Aakar" target="_blank" rel="noopener noreferrer" data-link-chip="1">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+
                     <!-- AWS RL Environment (featured) -->
                     <div class="card animate-up project-card project-card-featured" data-project-id="proj-aws-rl-env">
                         <span class="featured-pill type-animate">Featured</span>
@@ -3111,6 +3158,90 @@
 
             // ========== Extend projectDetails with full project entries ==========
             Object.assign(projectDetails, {
+                'proj-aakar': {
+                    title: 'Aakar — LLM Architecture Visualizer',
+                    tagline: 'Paste any HuggingFace model id and explore its real PyTorch module tree as an interactive, zoomable diagram — from the whole model down into a single attention head.',
+                    tags: ['React', 'TypeScript', 'React Flow', 'FastAPI', 'PyTorch', 'transformers', 'Zustand'],
+                    links: [
+                        { label: 'Live Demo', url: 'https://aakar.udaykp.dev/', kind: 'primary' },
+                        { label: 'GitHub', url: 'https://github.com/UdayKiranPadhy/Aakar', kind: 'secondary' },
+                    ],
+                    problem: 'Understanding how a specific transformer is actually wired — which modules nest inside a decoder layer, how attention projections fan out into heads, where RoPE and the norms sit — usually means reading modeling source code or staring at static diagrams that drift out of date and never match the exact checkpoint you care about.',
+                    approach: 'Introspect the real model instead of hand-drawing it. The backend loads any HuggingFace architecture on the PyTorch meta device — config only, zero weights downloaded — and walks the live nn.Module tree into a serializable spec. The frontend renders that spec as a clickable, zoomable diagram, with a Strategy + Registry design so a new module class can get a bespoke renderer without touching existing code.',
+                    solution: 'A FastAPI service turns any model id into a faithful module-tree spec; a React + React Flow canvas lets you drill through four levels of zoom — root model → backbone → a single decoder block → inside attention (q/k/v/o projections, grouped-query head shapes, scores → softmax → context). Because it mirrors stock transformers, new families (Llama, Qwen, Mistral, Gemma, Mixtral, MoE) light up the moment the library supports them — no per-architecture code. Companion views add a token-shape journey, parameter and compute breakdowns, and a side-by-side model comparison.',
+                    impact: 'Turns "go read the modeling file" into "paste an id and click around." A teaching and study tool that stays correct for any current or future architecture, built on a clean layered codebase (domain → application → infrastructure → presentation) designed to be extended as new architecture concepts are studied.',
+                    perf: [
+                        { v: 'Any',      l: 'HuggingFace Model' },
+                        { v: '4 levels', l: 'Zoom: Model → Attention' },
+                        { v: '0',        l: 'Weights Downloaded' },
+                        { v: 'Zero',     l: 'Per-Architecture Code' },
+                    ],
+                    heroDiagram: `<svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <marker id="arr-aakar" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="var(--text-muted)"/>
+                            </marker>
+                        </defs>
+                        <text x="350" y="22" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text-strong)">Paste a model id → the real nn.Module tree, four levels deep</text>
+
+                        <!-- Level 1 · Model -->
+                        <rect x="14" y="40" width="150" height="170" rx="12" fill="var(--diag-blue-bg)" stroke="var(--blue-accent)" stroke-width="1.5"/>
+                        <text x="89" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="var(--blue-accent)">1 · MODEL</text>
+                        <line x1="32" y1="74" x2="146" y2="74" stroke="var(--blue-accent)" stroke-width="1" opacity="0.35"/>
+                        <rect x="28" y="86" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--blue-accent)"/>
+                        <text x="89" y="104" text-anchor="middle" font-size="10" fill="var(--text-strong)">XxxForCausalLM</text>
+                        <rect x="28" y="120" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--blue-accent)"/>
+                        <text x="89" y="138" text-anchor="middle" font-size="10" fill="var(--text-strong)">↳ model (backbone)</text>
+                        <rect x="28" y="154" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--blue-accent)"/>
+                        <text x="89" y="172" text-anchor="middle" font-size="10" fill="var(--text-strong)">↳ lm_head</text>
+
+                        <text x="174" y="118" text-anchor="middle" font-size="8" fill="var(--text-muted)">zoom</text>
+                        <path d="M 164 125 L 184 125" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr-aakar)" fill="none"/>
+
+                        <!-- Level 2 · Backbone -->
+                        <rect x="186" y="40" width="150" height="170" rx="12" fill="var(--diag-yellow-bg)" stroke="var(--diag-yellow-stroke)" stroke-width="1.5"/>
+                        <text x="261" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text-strong)">2 · BACKBONE</text>
+                        <line x1="204" y1="74" x2="318" y2="74" stroke="var(--diag-yellow-stroke)" stroke-width="1" opacity="0.5"/>
+                        <rect x="200" y="86" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--diag-yellow-stroke)"/>
+                        <text x="261" y="104" text-anchor="middle" font-size="10" fill="var(--text-strong)">embed_tokens</text>
+                        <rect x="200" y="120" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--diag-yellow-stroke)"/>
+                        <text x="261" y="138" text-anchor="middle" font-size="10" fill="var(--text-strong)">layers × N</text>
+                        <rect x="200" y="154" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--diag-yellow-stroke)"/>
+                        <text x="261" y="172" text-anchor="middle" font-size="10" fill="var(--text-strong)">norm · rotary_emb</text>
+
+                        <text x="346" y="118" text-anchor="middle" font-size="8" fill="var(--text-muted)">zoom</text>
+                        <path d="M 336 125 L 356 125" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr-aakar)" fill="none"/>
+
+                        <!-- Level 3 · Decoder block -->
+                        <rect x="358" y="40" width="150" height="170" rx="12" fill="var(--diag-green-bg)" stroke="var(--diag-green-stroke)" stroke-width="1.5"/>
+                        <text x="433" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="var(--diag-green-stroke)">3 · LAYER</text>
+                        <line x1="376" y1="74" x2="490" y2="74" stroke="var(--diag-green-stroke)" stroke-width="1" opacity="0.4"/>
+                        <rect x="372" y="86" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--diag-green-stroke)"/>
+                        <text x="433" y="104" text-anchor="middle" font-size="10" fill="var(--text-strong)">input_layernorm</text>
+                        <rect x="372" y="120" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--diag-green-stroke)"/>
+                        <text x="433" y="138" text-anchor="middle" font-size="10" fill="var(--text-strong)">self_attn → +res</text>
+                        <rect x="372" y="154" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--diag-green-stroke)"/>
+                        <text x="433" y="172" text-anchor="middle" font-size="10" fill="var(--text-strong)">MLP → +res</text>
+
+                        <text x="518" y="118" text-anchor="middle" font-size="8" fill="var(--text-muted)">zoom</text>
+                        <path d="M 508 125 L 528 125" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr-aakar)" fill="none"/>
+
+                        <!-- Level 4 · Attention -->
+                        <rect x="530" y="40" width="150" height="170" rx="12" fill="var(--diag-red-bg)" stroke="var(--diag-red-stroke)" stroke-width="1.5"/>
+                        <text x="605" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="var(--diag-red-stroke)">4 · ATTENTION</text>
+                        <line x1="548" y1="74" x2="662" y2="74" stroke="var(--diag-red-stroke)" stroke-width="1" opacity="0.4"/>
+                        <rect x="544" y="86" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--diag-red-stroke)"/>
+                        <text x="605" y="104" text-anchor="middle" font-size="10" fill="var(--text-strong)">q · k · v_proj</text>
+                        <rect x="544" y="120" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--diag-red-stroke)"/>
+                        <text x="605" y="138" text-anchor="middle" font-size="10" fill="var(--text-strong)">scores → softmax</text>
+                        <rect x="544" y="154" width="122" height="28" rx="6" fill="var(--surface-color)" stroke="var(--diag-red-stroke)"/>
+                        <text x="605" y="172" text-anchor="middle" font-size="10" fill="var(--text-strong)">context → o_proj</text>
+
+                        <!-- Backend story strip -->
+                        <rect x="14" y="224" width="666" height="38" rx="8" fill="var(--diag-warm-bg)" stroke="var(--border-color)" stroke-width="1"/>
+                        <text x="347" y="248" text-anchor="middle" font-size="11" fill="var(--text-muted)">Any HuggingFace architecture · introspected on the meta device · 0 weights downloaded</text>
+                    </svg>`,
+                },
                 'proj-aws-rl-env': {
                     title: 'AWS RL Environment',
                     tagline: 'Production-grade RL training pipeline for cloud agents — 120+ AWS tasks, 8-way parallel rollouts, full SFT→GRPO pipeline.',

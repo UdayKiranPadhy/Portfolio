@@ -10,6 +10,52 @@
       ]
     }
   },
+  "proj-aakar": [
+    {
+      "src": "01-explore-anatomy.png",
+      "label": "Landing — paste any HuggingFace model id to visualize"
+    },
+    {
+      "src": "02-model-overview.png",
+      "label": "Model Overview — HF metadata, parameters & architecture summary"
+    },
+    {
+      "src": "03-architecture-backbone.png",
+      "label": "Backbone — embeddings, decoder layers, final norm & RoPE"
+    },
+    {
+      "src": "04-decoder-layer-stack.png",
+      "label": "The decoder stack — 24 repeated Qwen2 layers"
+    },
+    {
+      "src": "05-decoder-block.png",
+      "label": "One decoder block — norm → attention → residual → MLP"
+    },
+    {
+      "src": "06-attention-internals.png",
+      "label": "Inside attention — Q/K/V → scores → softmax → O (GQA 7:1)"
+    },
+    {
+      "src": "07-token-journey.png",
+      "label": "Token Journey — one token's shape transformed at every stage"
+    },
+    {
+      "src": "08-parameter-distribution.png",
+      "label": "Parameters — where the 494M weights live + largest tensors"
+    },
+    {
+      "src": "09-moe-sparse-block.png",
+      "label": "Any architecture — a Mixture-of-Experts block (router + experts)"
+    },
+    {
+      "src": "10-compare-models.png",
+      "label": "Compare — two models head to head (Qwen2.5 vs GPT-2)"
+    },
+    {
+      "src": "11-learn-concepts.png",
+      "label": "Learn — built-in library of LLM concepts, papers & milestones"
+    }
+  ],
   "proj-aws-rl-env": [
     {
       "src": "01-system-architecture.png",
